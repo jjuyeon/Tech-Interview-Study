@@ -4,6 +4,7 @@
 
 ### :notebook_with_decorative_cover: 인덱스 (Index)
 1. 인덱스란?
+2. 
 
 ### :notebook_with_decorative_cover: 관계형 DB vs 비관계형 DB
 

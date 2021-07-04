@@ -12,3 +12,5 @@
 ### :notebook_with_decorative_cover: 데이터 모델링
 
 ### :notebook_with_decorative_cover: 정규화 (Normalization)
+1. 정규화란 무엇인지, 필요한 이유와 함께 답변해주세요.
+2. 각 정규화 단계에 대해 **만족되어야 할 조건**을 중심으로 설명해주세요.

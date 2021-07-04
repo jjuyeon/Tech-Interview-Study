@@ -23,5 +23,8 @@
 8. 트랜잭션 격리 수준의 각 레벨에 대해 간략하게 설명
 
 ### :notebook_with_decorative_cover: 데이터 모델링
+1. 다양한 데이터 모델에 대해서 설명해주세요.
+2. 데이터 모델링의 디자인 스키마에 대해서 설명해주세요.
+3. 위에서 답변한 스키마 중에서 어떤 것이 더 낫습니까?
 
 ### :notebook_with_decorative_cover: 정규화 (Normalization)

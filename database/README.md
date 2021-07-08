@@ -30,3 +30,9 @@
 ### :notebook_with_decorative_cover: 정규화 (Normalization)
 1. 정규화란 무엇인지, 필요한 이유와 함께 답변해주세요.
 2. 각 정규화 단계에 대해 **만족되어야 할 조건**을 중심으로 설명해주세요.
+
+
+#### 참고 자료
+- DBMS는 어떻게 트랜잭션을 관리할까? - https://d2.naver.com/helloworld/407507
+- 성능 향상을 위한 SQL 작성법 - https://d2.naver.com/helloworld/1155
+- CUBRID Internals - 키와 인덱스의 관계 - https://d2.naver.com/helloworld/1043622

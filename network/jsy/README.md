@@ -6,3 +6,7 @@
 |데이터 통신|[:white_check_mark:](../jsy/dataCommunication.md)|
 |IP 주소|[:white_check_mark:](../jsy/ip.md)|
 |ARP 프로토콜|[:white_check_mark:](../jsy/arp.md)|
+|IPv4, ICMP 프로토콜|[:white_check_mark:](../jsy/protocol.md)|
+|전송계층 및 포트|[:white_check_mark:](../jsy/port.md)|
+|UDP|[:white_check_mark:](../jsy/udp.md)|
+|TCP|[:white_check_mark:](../jsy/tcp.md)|

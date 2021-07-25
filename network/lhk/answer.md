@@ -121,7 +121,13 @@
 
 ### :notebook_with_decorative_cover:  NAT와 포트포워딩
 1. NAT란 무엇인지 설명해주세요.
+        
+        사설 IP를 공인 IP로 바꿔주는데 주로 사용
+        IPv4 주소 부족 문제를 해결해주고 내부의 사설 IP를 감춰 보안성에 이점
+        
 2. 포트포워딩이란 무엇인지 설명해주세요.
+
+        특정 IP와 포트로 연결을 요청하면, 포워딩된 내부 포트로 연결해주는 것    
 
 ### :notebook_with_decorative_cover: HTTP 프로토콜
 1. HTTP와 HTTPS의 차이에 대해 설명하세요.

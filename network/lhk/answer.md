@@ -69,3 +69,67 @@
 
         ARP는 IP 주소를 이용해서 MAC 주소를 알아오는 것이고, RARP는 MAC 주소를 이용해서 IP 주소를 알아오는 것이다.
         
+
+### :notebook_with_decorative_cover: IPv4, ICMP 프로토콜
+1. IPv4가 하는일과 IPv4 프로토콜 구조를 설명해주세요.
+        
+        네트워크 상에서 데이터를 교환하기 위한 프로토콜
+        정확한 전달과 순서를 보장하지 않음 => TCP가 순서 유지
+        Version - 4
+        IHL(Header Length) - 최대 1111(15) 표현. 헤더 길이는 20 ~ 60이므로 4로 나눔. 보통 20이라 5
+        Total Length - 페이로드까지 합쳐진 길이
+        Identification - 쪼개진 데이터를 합치기 위해 id 부여
+        IP Flags의 M - 여러번 쪼개면 1로 설정
+        Fragment Offset - 받을 때 조립할 순서
+        Time To Live(TTL) - 네트워크 장비 하나씩 지날때마다 1 감소. 상대방 os 종류를 알 수 있음. 윈도우(128), 리눅스(64)
+        Protocol - 상위 프로토콜 종류
+        Header Checksum - 오류 있는지 확인
+2. ICMP가 하는일과 ICMP 프로토콜 구조를 설명해주세요.
+
+        상대방과 통신이 되는지 확인하는 용도
+        Type  
+        0 - 응답
+        8 - 요청
+        3 - 목적지까지 가지 못한 경우 (경로 문제)
+        11 - 목적지까지 갔는데, 응답이 없는 경우 (상대방 문제, 주로 방화벽)
+        5 - 원격지의 상대방 라우팅 테이블 수정할 때 사용
+        
+3. 다른 네트워크까지 내 패킷의 이동 과정을 설명해주세요.
+
+        1. 자신의 라우팅 테이블을 확인한다. 이때, 목적지의 네트워크 대역이 라우팅 테이블에 있어야 갈 수 있다. 없다면 ARP로 알아와야 한다.
+        2. ICMP(요청이므로 08)를 작성하여 붙인다.
+        3. IPv4를 작성하여 붙인다.        
+        4. 가까운 목적지 주소로 Ethernet을 작성하여 붙인다.
+        5. 네트워크 장비를 돌아다니면서 자신의 IP인지 확인후, 아니면 다음 목적지를 작성하여 Ethernet을 보낸다.
+        6. 5번 과정을 반복하며 목적지에 도달했으면 ICMP(응답이므로 00)을 붙여서 돌려 보낸다.
+        
+### :notebook_with_decorative_cover: 전송계층 및 포트
+1. Port란 무엇인가요?
+2. 서버 측에서 사용되는 포트는 이미 정해져 있습니다. 주요 Well-Known Port에 대해 아는대로 설명해주세요.
+3. 클라이언트와 서버의 통신 과정에 대해 설명해주세요.
+
+### :notebook_with_decorative_cover: UDP 비연결지향형
+1. UDP 서버의 특징에 대해서 설명하세요.
+2. UDP는 어느 상황에서 사용하는지 설명하세요.
+
+### :notebook_with_decorative_cover: TCP 연결지향형
+1. TCP 프로토콜의 특징을 UDP 프로토콜과 비교하여 설명해주세요.
+2. 3-way handshake에 대해 설명해주세요.
+3. 3-way handshake에서 클라이언트가 서버가 보낸 ACK+SYC을 받지 못하면 어떻게 되나요?
+4. 4-way handshake에서 서버가 마지막에 FIN을 보내는 이유는 무엇인가요?
+5. 4-way handshake에서 클라이언트가 마지막에 ACK를 보내는 이유는 무엇인가요?
+
+### :notebook_with_decorative_cover:  NAT와 포트포워딩
+1. NAT란 무엇인지 설명해주세요.
+2. 포트포워딩이란 무엇인지 설명해주세요.
+
+### :notebook_with_decorative_cover: HTTP 프로토콜
+1. HTTP와 HTTPS의 차이에 대해 설명하세요.
+2. HTTP의 GET 방식과 POST 방식을 비교해주세요.
+3. HTTP의 Statue Code의 종류는 어떻게 되나요?
+4. 주소창에 URL을 치고 엔터를 치면 흐름이 어떻게 되나요?
+
+### :notebook_with_decorative_cover: 기타
+1. CORS란 무엇인가요?
+2. CORS 에러가 발생하는 원인을 SOP와 관련하여 설명해주세요.
+3. 쿠키와 세션의 차이점에 대해 설명해주세요.

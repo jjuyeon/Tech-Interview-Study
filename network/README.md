@@ -42,3 +42,19 @@
 3. 3-way handshake에서 클라이언트가 서버가 보낸 ACK+SYC을 받지 못하면 어떻게 되나요?
 4. 4-way handshake에서 서버가 마지막에 FIN을 보내는 이유는 무엇인가요?
 5. 4-way handshake에서 클라이언트가 마지막에 ACK를 보내는 이유는 무엇인가요?
+
+### :notebook_with_decorative_cover:  NAT와 포트포워딩
+1. NAT란 무엇인지 설명해주세요.
+2. 포트포워딩이란 무엇인지 설명해주세요.
+
+### :notebook_with_decorative_cover: HTTP 프로토콜
+1. HTTP와 HTTPS의 차이에 대해 설명하세요.
+2. HTTP의 GET 방식과 POST 방식을 비교해주세요.
+3. HTTP의 Statue Code의 종류는 어떻게 되나요?
+4. 주소창에 URL을 치고 엔터를 치면 흐름이 어떻게 되나요?
+
+### :notebook_with_decorative_cover: 기타
+1. CORS란 무엇인가요?
+2. CORS 에러가 발생하는 원인을 SOP와 관련하여 설명해주세요.
+3. 쿠키와 세션의 차이점에 대해 설명해주세요.
+

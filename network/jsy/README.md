@@ -10,3 +10,6 @@
 |전송계층 및 포트|[:white_check_mark:](../jsy/port.md)|
 |UDP|[:white_check_mark:](../jsy/udp.md)|
 |TCP|[:white_check_mark:](../jsy/tcp.md)|
+|NAT, 포트포워딩|[[:white_check_mark:](../jsy/portforwarding.md)|
+|HTTP 프로토콜|[:white_check_mark:](../jsy/http.md)|
+|ETC|[:white_check_mark:](../jsy/etc.md)|

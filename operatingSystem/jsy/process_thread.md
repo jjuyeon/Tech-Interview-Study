@@ -50,6 +50,7 @@ https://github.com/WooVictory/Ready-For-Tech-Interview/blob/master/Operating%20S
 |메모리 관리 정보|페이지 테이블, 세그먼트 테이블 등|
 |입출력 상태 정보|프로세스에 할당된 입출력 장치들, 열린 파일 목록|
 |어카운팅 정보|사용된 CPU시간, 시간제한, 계정번호 등|
+
 <br><br>
 
 ### 2. Thread
@@ -91,7 +92,7 @@ https://github.com/WooVictory/Ready-For-Tech-Interview/blob/master/Operating%20S
   - 자원을 공유하기 때문에 오버헤드가 작다.
 2. 간단한 통신 방법으로 인한 프로그램 응답 시간 단축
   - stack을 제외한 모든 메모리 영역을 공유하여 데이터를 주고 받는다.<br> 통신의 부담이 적다.
-3. [context switching](#5-context-switching-문맥-교환) 시, 캐시 메모리를 비울 필요가 없기 때문에 비용이 적게 들고 더 빠르다.
+3. [Context Switching](#5-context-switching-문맥-교환) 시, 캐시 메모리를 비울 필요가 없기 때문에 비용이 적게 들고 더 빠르다.
 
 #### 2) 단점
 - 공유 메모리를 갖기 때문에, 하나의 스레드에 문제가 생기면 전체 프로세스가 영향을 받는다.

@@ -95,3 +95,47 @@
 
 > 세마포어: 공유된 자원의 데이터에 여러 **프로세스**가 동시 접근하는 것을 제한하는 병렬 프로그래밍 방식
 > 뮤텍스: 공유된 자원의 데이터에 여러 **쓰레드**가 동시 접근하는 것을 제한하는 병렬 프로그래밍 방식
+
+
+### :notebook_with_decorative_cover: Paging & Segmentation
+1. 페이징과 세그먼테이션에 대해서 설명하세요.
+2. 내부 단편화와 외부 단편화가 무엇인지 설명하세요.
+
+### :notebook_with_decorative_cover: Page replacement
+1. 페이지 부재(page fault)가 무엇인지 설명해주세요.
+2. 페이지 교체란 무엇인지 설명해주세요.
+3. 페이지 교체 알고리즘의 종류와 각각의 특징에 대해 설명해주세요.
+
+### :notebook_with_decorative_cover: Memory Management
+
+1. 운영체제의 메모리 관리 전략인 Contiguous Allocation, Noncontiguous Allocation의 차이점을 설명해주세요.
+
+> ##### 연속 할당
+> : 프로세스를 메모리에 올릴 때, 각각의 프로세스를 연속된 메모리 공간에 적재하는 것.
+> ex) Fixed partition allocation, Valiable partition allocation
+> ##### 동적 할당
+> : 하나의 프로세스를 메모리의 여러 영역에 분산시켜 적재하는 것.
+> ex) Paging, Segmentation, Paged Segmentation
+
+2. Swapping이란?
+
+> 현재 사용하지 않는 프로세스를 일시적으로 ```메모리 -> backing store```로 쫓아내는 기법.
+> 
+> priority-based CPU 스케줄링 알고리즘을 사용할 시, priority가 낮은 프로세스를 swap out / 높은 프로세스를 swap in 한다
+> 
+> compile time 혹은 load time binding을 사용하면 원래 위치로 swap in 해야하며, execution time binding에서는 추후 빈 메모리 영역 아무 곳에나 올릴 수 있다 ❗
+
+   - Swapping 시 발생할 수 있는 문제점?
+
+> swap-out 하는 과정(메모리에서 backing store로 프로세스를 쫓아낼 때) 메모리 영역 해제로 인한 **External Fragmentation**이 발생할 수 있다
+
+   - 외부 단편화를 해소할 수 있는 방법 두 가지 제시
+
+> 1. compaction(압축) 기법을 사용하여 적재된 각강의 메모리 영역, Hole들을 연속된 메모리로 이동시킨다 (하지만 비용이 너무 크다느 문제점이 있다)
+> 2. Noncontiguous Allocation 기법인 **페이징**을 사용한다. (하지만 내부 단편화는 발생할 수 있음)
+
+<br>
+
+### :notebook_with_decorative_cover: Vertual Memory
+1. 가상 메모리가 필요한 이유를 하는 일과 관련지어 설명해주세요.
+2. 요구 페이징이란 무엇이고, 요구 페이징에서 Page Fault가 발생했을 때, 처리되는 Page 교체 순서에 대해 설명해주세요.

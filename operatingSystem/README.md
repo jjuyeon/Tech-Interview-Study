@@ -29,7 +29,7 @@
 3. 페이지 교체 알고리즘의 종류와 각각의 특징에 대해 설명해주세요.
 
 ### :notebook_with_decorative_cover: Memory Management
-1. 운영체제의 메모리 관리 전략인 연속 할당, 동적 할당의 차이점을 설명해주세요.
+1. 운영체제의 메모리 관리 전략인 Contiguous Allocation, Noncontiguous Allocation의 차이점을 설명해주세요.
 2. Swapping이란?
    - Swapping 시 발생할 수 있는 문제점?
    - 외부 단편화를 해소할 수 있는 방법 두 가지 제시

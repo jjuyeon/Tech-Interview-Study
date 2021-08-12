@@ -73,11 +73,11 @@ https://velog.io/@injoon2019/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C-%EC%9A%B4%EC%9
 - 물리 메모리에 적재된지 가장 오래된 페이지를 선택하는 알고리즘
 - 가장 간단한 방법으로, 초기화 코드에서 사용하기 적절하다.
 - 참조 가능성을 고려하지 않고, 순서에 따라서만 내보낼 페이지를 선택하기 때문에 비효율적이다.
-- page frame 수가 증가해도 page fault가 많이 발생할 수 있다.
+- ***page frame 수가 증가해도 page fault가 많이 발생할 수 있다.***
   - 일반적으로는 page frame이 많아지면 메모리가 증가하므로, page fault가 줄어든다.
 - ex) 초기화 코드는 처음 프로세스가 실행될 때, 최초 초기화를 시키는 역할만 진행한다. 그러므로 메인 메모리에서 빠져도 괜찮다.
 - -> 처음 프로세스 실행시에는 반드시 필요하므로, 초기화를 시켜준 후 가장 먼저 내보낸다.
-#### 2) OPT(Optinal Page Replacement) algorithm
+#### 2) OPT(Optimal Page Replacement) algorithm
 ![opt](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcwOEfq%2FbtqALPC0rpi%2FXkkRr3cxkU5n4FBEW5KO5k%2Fimg.jpg)
 - 앞으로 가장 오랫동안 사용하지 않을 페이지를 선택하는 알고리즘
 - 선택한 페이지가 앞으로도 잘 사용되지 않을 것이라는 보장이 없으므로, 현실적으로 구현이 어렵다.
@@ -90,6 +90,7 @@ https://velog.io/@injoon2019/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C-%EC%9A%B4%EC%9
 - OPT의 초점이 '미래'라면 LRU의 초점은 '과거'이므로, 현실적으로 구현이 가능하다.
 - FIFO보다 page fault가 발생하는 횟수가 적다. <- 실질적으로 구현할 수 있는 알고리즘에서 최적의 방법 중 하나이다.
 - 페이지 최근 참조 시간을 소프트웨어적으로 계속 저장하고 비교해야 하므로, 오버헤드가 발생한다.
+- Linked List로 LRU 알고리즘을 구현할 수 있다.
 #### 4) LFU(Least Frequently Used) algorithm
 - 페이지의 참조 횟수로 교체할 페이지를 선택하는 알고리즘이다.
 - 많이 사용되는 페이지는 참조 횟수가 많아질 것이다.
@@ -98,6 +99,7 @@ https://velog.io/@injoon2019/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C-%EC%9A%B4%EC%9
   - 어떤 페이지를 초기에 많이 사용하다가 이후에 사용하지 않게 되어도, 참조 횟수가 많았기 때문에 계속 메모리에 머물게 된다. (초기 가정에 어긋남)
 - 페이지 참조 횟수를 소프트웨어적으로 계속 저장하고 비교해야 하므로, 오버헤드가 발생한다.
 - LRU보다 구현이 복잡하다.
+- Priority Heap으로 LFU 알고리즘을 구현할 수 있다.
 #### 5) Clock algorithm
 = Second chance algorithm = NUR (Not Used Recently) 또는 NRU(Not Recently Used)
 - 하드웨어의 지원을 받아 LRU, LFU 알고리즘에서 발생하는 오버헤드를 줄인 방식
@@ -106,6 +108,7 @@ https://velog.io/@injoon2019/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C-%EC%9A%B4%EC%9
   - 교체되는 페이지의 참조 시점이 가장 오래되었다는 것을 보장하지 않는다.
   - cf) LRU는 **가장** 오랫동안 사용하지 않은 페이지를 선택하는 알고리즘.
 - LRU, LFU에 비해 페이지의 관리가 훨씬 빠르고 효율적이다.
+- 최악의 경우 FIFO 알고리즘과 똑같은 성능을 보인다.
 - 대부분의 시스템에서 페이지 교체 알고리즘으로 체택하고 있다.
 ![clock](https://media.vlpt.us/images/injoon2019/post/f5b61c32-90e0-4e4f-a89b-34fdd05c555a/image.png)
 - page frame이 선형으로 배치되는 것과 달리 원형 배치가 되어 있다.

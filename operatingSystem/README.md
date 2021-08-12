@@ -23,11 +23,6 @@
 1. 페이징과 세그먼테이션에 대해서 설명하세요.
 2. 내부 단편화와 외부 단편화가 무엇인지 설명하세요.
 
-### :notebook_with_decorative_cover: Page replacement
-1. 페이지 부재(page fault)가 무엇인지 설명해주세요.
-2. 페이지 교체란 무엇인지 설명해주세요.
-3. 페이지 교체 알고리즘의 종류와 각각의 특징에 대해 설명해주세요.
-
 ### :notebook_with_decorative_cover: Memory Management
 1. 운영체제의 메모리 관리 전략인 Contiguous Allocation, Noncontiguous Allocation의 차이점을 설명해주세요.
 2. Swapping이란?
@@ -37,3 +32,8 @@
 ### :notebook_with_decorative_cover: Vertual Memory
 1. 가상 메모리가 필요한 이유를 하는 일과 관련지어 설명해주세요.
 2. 요구 페이징이란 무엇이고, 요구 페이징에서 Page Fault가 발생했을 때, 처리되는 Page 교체 순서에 대해 설명해주세요.
+
+### :notebook_with_decorative_cover: Page replacement
+1. 페이지 부재(page fault)가 무엇인지 설명해주세요.
+2. 페이지 교체란 무엇인지 설명해주세요.
+3. 페이지 교체 알고리즘의 종류와 각각의 특징에 대해 설명해주세요.

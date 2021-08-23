@@ -5,3 +5,4 @@
 |OOP|[:white_check_mark:](../jsy/oop.md)|
 |JVM|[:white_check_mark:](../jsy/jvm.md)|
 |JAVA|[:white_check_mark:](../jsy/java.md)|
+|JAVA 자료구조|[:white_check_mark:](../jsy/structure.md)|

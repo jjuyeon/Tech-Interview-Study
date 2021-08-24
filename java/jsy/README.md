@@ -6,3 +6,4 @@
 |JVM|[:white_check_mark:](../jsy/jvm.md)|
 |JAVA|[:white_check_mark:](../jsy/java.md)|
 |JAVA 자료구조|[:white_check_mark:](../jsy/structure.md)|
+|JAVA 라이브러리|[:white_check_mark:](../jsy/lib.md)|

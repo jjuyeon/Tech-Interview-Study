@@ -11,7 +11,7 @@
 6. 인터페이스와 추상클래스의 차이점은 무엇인지 설명해주세요.
 7. 직렬화가 무엇인지 설명하세요.
 8. Call by Value와 Call by Reference의 차이에 대해 설명해주세요.
-9. Catched Exception과 Uncatched Exception의 차이를 설명해주세요.
+9. Checked Exception과 Unchecked Exception의 차이를 설명해주세요.
 
 ### :notebook_with_decorative_cover: JAVA 자료구조
 1. Java의 HashMap과 HashTable의 차이점을 설명해주세요.

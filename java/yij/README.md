@@ -50,7 +50,21 @@
 
 <br>
 
-1.  Catched Exception과 Uncatched Exception의 차이를 설명해주세요.
+8.  Catched Exception과 Uncatched Exception의 차이를 설명해주세요.
+
+[Catched and Uncatched Exception](https://2jinishappy.tistory.com/292)
+
+> Uncatched Exception
+> : Throwable 클래스를 상속받는 클래스 중 Error 클래스와, Exception - RuntimeException를 포함한 서브 클래스를 포함하는 Exception을 가리킵니다.
+> - 코드 작성 시점에는 에러가 발생하지 않지만, Runtime 시점에 에러가 발생합니다.
+> - Transaction의 대상이 되어 에러가 발생할 시 Rollback이 발생합니다.
+> - NPE, ClassCastException 등이 대표적인 예시입니다.
+> 
+> Catched Exception
+> : Exception의 서브 클래스 중 RuntimeException의 서브 클래스가 아닌 클래스들을 포함하는 Exception을 가리킵니다.
+> - Compile 시점에 에러가 발생하기 때문에 에러 핸들링을 해주어야 합니다.
+> - Transaction의 default 대상에 포함되지 않아 에러가 발생해도 Rollback이 자동으로 일어나지 않습니다.
+> - ClassNotFoundException, IOException 등이 대표적인 예시입니다.
 
 
 <br>

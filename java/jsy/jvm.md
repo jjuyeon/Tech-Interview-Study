@@ -4,8 +4,7 @@
 https://parkadd.tistory.com/20<br>
 https://hoonmaro.tistory.com/19<br>
 https://velog.io/@woo00oo/%EC%9E%90%EB%B0%94-%EC%BB%B4%ED%8C%8C%EC%9D%BC-%EA%B3%BC%EC%A0%95<br>
-https://github.com/HyeminNoh/Tech-Stack/blob/master/docs/Java/GarbageCollection.md<br>
-https://mangkyu.tistory.com/94
+https://github.com/HyeminNoh/Tech-Stack/blob/master/docs/Java/GarbageCollection.md
 <hr>
 
 ## Question
@@ -138,10 +137,10 @@ https://mangkyu.tistory.com/94
 
 ```
 1. 객체를 최초 생성하면, 새로운 객체가 Eden 영역에 생성된다.
-2. Eden 영역에 GC (Minor GC)가 동작하고, 그 중에서 아직 참조 중인 객체가 Survivor0 로 이동한다.
+2. Eden 영역에 GC(Minor GC)가 동작하고, 그 중에서 아직 참조 중인 객체가 Survivor0 로 이동한다.
 3. 2번의 동작이 반복되어 Survivor0 의 영역이 꽉 차게 된다.
 4. Survivor0 영역에 GC(Minor GC)가 동작하고, 아직 참조 중인 객체들은 Survivor1 으로 이동한다.
 5. 4의 과정을 끝내고 Survivor0 영역을 비운다. (2개의 Survivor 영역 중 1개는 반드시 비어있어야 한다.)
 6. 위의 단계들이 반복되어 특정 횟수만큼 살아남은 객체는 Old 영역으로 이동한다. (Survivor0 <-> Survivor1)
-7. Old 영역이 가득차서 Survivor 영역에서 Old 영역으로 이동이 불가능할 때, Old 영역에 대한 GC (Major GC)가 실행된다.
+7. Old 영역이 가득차서 Survivor 영역에서 Old 영역으로 이동이 불가능할 때, Old 영역에 대한 GC(Major GC)가 실행된다.
 ```

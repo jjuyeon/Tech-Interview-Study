@@ -10,9 +10,15 @@
 5. 클래스는 무엇이고, 객체는 무엇인지 설명해주세요.
 6. 인터페이스와 추상클래스의 차이점은 무엇인지 설명해주세요.
 7. 직렬화가 무엇인지 설명하세요.
+8. Call by Value와 Call by Reference의 차이에 대해 설명해주세요.
+9. Checked Exception과 Unchecked Exception의 차이를 설명해주세요.
 
 ### :notebook_with_decorative_cover: JAVA 자료구조
 1. Java의 HashMap과 HashTable의 차이점을 설명해주세요.
 2. Java의 원시타입들은 무엇이 있으며 각각 몇 바이트를 차지하는지 설명해주세요.
 3. String, StringBuffer, StringBuilder의 차이를 설명하세요.
 4. 오버라이딩과 오버로딩이 무엇이며 어떤 차이점이 있는지 설명해주세요.
+5. Generic에 대해 설명해주세요.
+
+### :notebook_with_decorative_cover: JAVA 라이브러리 & 프레임워크
+1. '=='과 'equals()'의 차이에 대해 설명하세요.

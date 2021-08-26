@@ -144,3 +144,25 @@
 ### :notebook_with_decorative_cover: JAVA 라이브러리 & 프레임워크
 
 1. '=='과 'equals()'의 차이에 대해 설명하세요.
+
+> 기본적으로 '=='은 동일성(identity), 'equals()'는 동등성(equality)에 기반합니다.  
+> 
+> '=='은 비교하고 있는 두 피연산자가 같은 식별자인지, 'equals()'는 비교하고 있는 두 피연산자의 상태(value)가 동일한지 비교합니다.
+> 
+> 따라서 
+> 
+> ``` java
+> String a = "Hello";
+> String b = "Hello";
+> 
+> System.out.println(a==b);   //print false
+> System.out.println(a.equals(b));  //print true
+> ```
+> 같은 상태를 가진 서로 다른 두 객체를 
+> - '=='로 비교하면, 두 객체의 식별자가 다르기 때문에 false를 return합니다.
+> - 'equals()'로 비교하면, 두 객체의 현재 상태인 value가 같기 때문에 true를 return합니다.
+> 
+> ``` java
+> String a = new String("Hello");
+> String b = new String("Hello");
+> ```

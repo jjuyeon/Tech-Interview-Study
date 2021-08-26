@@ -30,6 +30,45 @@
 
 <br>
 
+7. Call by Value와 Call by Reference의 차이에 대해 설명해주세요.
+
+> 정의부 -> [Return type] Method ([DataType] parameter, ..)
+> 
+> 호출부 -> Method(argument, ..)
+> 
+> 메서드의 정의 및 호출이 위와 같은 형식으로 이루어져 있다고 가정합니다.
+> 
+> **Call by Value**: 메서드를 호출할 때 argument로 전달한 인자를 복사해서 Method 내의 parameter로 전달하는 방식 
+> - Method 내에서 접근하는 parameter는 지역 변수로 새롭게 복사되어 사용하는 값입니다.
+> - Method 내의 parameter의 값을 변경해도 호출부의 argument에 영향이 가지 않습니다.
+> - Method 내의 parameter의 Life Time은 Method의 return문이 수행될 때 까지입니다.(메서드 수행이 끝난 뒤 소멸됩니다)
+> 
+> **Call by Reference**: 메서드를 호출할 때 argument로 전달한 인자의 주소값을 전달하여 Method 내에서 실제 argument를 접근하는 방식
+> - Method 내에서 접근하는 parameter는 실제 argument가 위치하는 메모리를 가리킵니다
+> - Method 내의 parameter의 값을 변경하면 호출부의 argument가 가리키는 변수 또한 변경됩니다.
+> - Method의 수행이 종료되어도 사라지지 않습니다.
+
+<br>
+
+8.  Catched Exception과 Uncatched Exception의 차이를 설명해주세요.
+
+[Catched and Uncatched Exception](https://2jinishappy.tistory.com/292)
+
+> Uncatched Exception
+> : Throwable 클래스를 상속받는 클래스 중 Error 클래스와, Exception - RuntimeException를 포함한 서브 클래스를 포함하는 Exception을 가리킵니다.
+> - 코드 작성 시점에는 에러가 발생하지 않지만, Runtime 시점에 에러가 발생합니다.
+> - Transaction의 대상이 되어 에러가 발생할 시 Rollback이 발생합니다.
+> - NPE, ClassCastException 등이 대표적인 예시입니다.
+> 
+> Catched Exception
+> : Exception의 서브 클래스 중 RuntimeException의 서브 클래스가 아닌 클래스들을 포함하는 Exception을 가리킵니다.
+> - Compile 시점에 에러가 발생하기 때문에 에러 핸들링을 해주어야 합니다.
+> - Transaction의 default 대상에 포함되지 않아 에러가 발생해도 Rollback이 자동으로 일어나지 않습니다.
+> - ClassNotFoundException, IOException 등이 대표적인 예시입니다.
+
+
+<br>
+
 ### :notebook_with_decorative_cover: JAVA 자료구조
 
 1. Java의 Garbage Collection 동작 과정을 설명해주세요.
@@ -94,3 +133,14 @@
 > Overriding: 자식(서브) 클래스가 부모(슈퍼) 클래스에 정의된 메소드를 재정의 할 수 있는 기능.
 > Overloading: 같은 함수 이름, 다른 함수 파라미터를 가지는 여러 메소드를 정의할 수 있는 기능.
 > 기본적으로 오버로딩은 상속, 오버라이딩은 다형성에 관련되어 있습니다.
+
+<br>
+
+6. Generic에 대해 설명해주세요.
+
+<br>
+
+
+### :notebook_with_decorative_cover: JAVA 라이브러리 & 프레임워크
+
+1. '=='과 'equals()'의 차이에 대해 설명하세요.

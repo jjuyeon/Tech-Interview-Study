@@ -15,7 +15,10 @@ https://github.com/WooVictory/Ready-For-Tech-Interview/blob/master/Java/%5BJava%
 3. [String, StringBuffer, StringBuilder의 차이를 설명하세요.]()
 <br><br>
 
-4. [오버라이딩과 오버로딩이 무엇이며 어떤 차이점이 있는지 설명해주세요.]()
+4. [오버라이딩과 오버로딩이 무엇이며 어떤 차이점이 있는지 설명해주세요.](#2-오버라이딩-vs-오버로딩)
+<br><br>
+
+5. [Generic에 대해 설명해주세요.]()
 <hr>
 
 ## :nerd_face:	What I study

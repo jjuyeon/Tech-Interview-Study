@@ -6,7 +6,7 @@ https://youngjinmo.github.io/2021/04/principles-of-oop/
 <hr>
 
 ## Question
-1. [객체지향에 대해서 설명하세요.]()
+1. [객체지향에 대해서 설명하세요.](#객체지향-oop)
 <hr>
 
 ## :nerd_face:	What I study

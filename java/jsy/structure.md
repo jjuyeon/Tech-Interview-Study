@@ -2,6 +2,8 @@
 
 #### reference
 https://velog.io/@gillog/%EC%9B%90%EC%8B%9C%ED%83%80%EC%9E%85-%EC%B0%B8%EC%A1%B0%ED%83%80%EC%9E%85Primitive-Type-Reference-Type<br>
+https://preamtree.tistory.com/15<br>
+https://blog.naver.com/PostView.nhn?isHttpsRedirect=true&blogId=thdansgur&logNo=220910298503<br>
 https://github.com/WooVictory/Ready-For-Tech-Interview/blob/master/Java/%5BJava%5D%20%EC%98%A4%EB%B2%84%EB%9D%BC%EC%9D%B4%EB%94%A9%EA%B3%BC%20%EC%98%A4%EB%B2%84%EB%A1%9C%EB%94%A9.md<br>
 https://ltk3934.tistory.com/81<br>
 https://github.com/HyeminNoh/Tech-Stack/blob/master/docs/Java/Generics.md
@@ -11,26 +13,34 @@ https://github.com/HyeminNoh/Tech-Stack/blob/master/docs/Java/Generics.md
 1. [Java의 HashMap과 HashTable의 차이점을 설명해주세요.]()
 <br><br>
 
-1. [Java의 원시타입들은 무엇이 있으며 각각 몇 바이트를 차지하는지 설명해주세요.](#1-1-원시타입기본타입)
+2. [Java의 원시타입들은 무엇이 있으며 각각 몇 바이트를 차지하는지 설명해주세요.](#2-1-원시타입기본타입)
 <br><br>
 
-3. [String, StringBuffer, StringBuilder의 차이를 설명하세요.]()
+3. [Wrapper Class에 대해 설명해주세요.](#3-wrapper-class)
+- 기본타입에 해당하는 데이터를 객체로 포장해주는 클래스입니다. null처리가 가능하므로, 직접적인 산술 연산이 불가능합니다. 즉, 참조타입끼리의 연산은 불가능하기 때문에 기본타입으로 변환하여 연산해야한다는 주의점이 있습니다.
 <br><br>
 
-4. [오버라이딩과 오버로딩이 무엇이며 어떤 차이점이 있는지 설명해주세요.](#2-오버라이딩-vs-오버로딩)
+4. [오토 박싱과 언박싱에 대해 설명해주세요.](#4-1-auto-boxing--auto-unboxing)
+- 박싱은 원시타입을 Wrapper class로 바꿔주는 것이고, 언박싱은 반대로 Wrapper class에서 원시타입으로 바꿔주는 것을 의미합니다. JAVA 1.5 부터 오토 박싱/오토 언박싱 기능이 추가되었는데, 명시적으로 원시타입을 참조타입으로 감싸주지 않아도 컴파일러가 자동으로 박싱/언박싱합니다.
+<br><br>
+
+5. [업캐스팅과 다운캐스팅의 차이에 대해 설명해주세요.]()
+<br><br>
+
+6. [오버라이딩과 오버로딩이 무엇이며 어떤 차이점이 있는지 설명해주세요.](#2-오버라이딩-vs-오버로딩)
 - 오버라이딩은 상속 받은 메소드의 내용만 변경하는 것이고, 오버로딩은 기존에 없던 새로운 메소드를 정의하는 것입니다.
 - 큰 차이점으로는 오버라이딩은 부모 클래스로부터 메소드를 그대로 받아 재사용하는 것이기 때문에 메소드 이름, 매개변수, 반환타입이 같아야합니다. 반면, 오버로딩은 메소드의 이름은 같으나, 매개변수의 개수, 자료형, 선언 순서가 다른 새로운 함수를 정의한다는 것입니다.
 <br><br>
 
-5. [Generic에 대해 설명해주세요.](#3-generic)
+7. [Generic에 대해 설명해주세요.](#3-generic)
 - 제네릭은 메소드나 클래스에서 사용할 내부 데이터 타입을 컴파일 시에 미리 지정하는 방법입니다. 타입변수 ```<T>```를 사용하면서 다운 캐스팅이 필요없게 되었고, 클래스나 메소드 내부에서 사용되는 객체의 타입 안정성을 높일 수 있습니다.
 <hr>
 
 ## :nerd_face:	What I study
-### 1. Java의 데이터 타입
+### 2. Java의 데이터 타입
 - 원시타입(Primitive Type): 실제 데이터 값을 저장하는 타입
 - 참조타입(Reference Type): 메모리 번지 값을 통해 객체를 참조하는 타입
-#### 1-1) 원시타입(기본타입)
+#### 2-1) 원시타입(기본타입)
 |종류|데이터형|크기 byte|크기 bit|
 |:---:|:---:|:---:|:---:|
 |논리형|boolean|1|8|
@@ -56,7 +66,7 @@ https://github.com/HyeminNoh/Tech-Stack/blob/master/docs/Java/Generics.md
   - double형 데이터 타입이 기본 데이터타입이다.
   - float형 데이터 타입보다 double형 데이터 타입이 2배정도 더 정밀한 데이터를 표현할 수 있다.
   - float형 데이터 타입을 사용하고자 하는 경우에는 실수 데이터 맨 뒤 쪽에, 접미사 'f' 또는 'F'를 붙여야한다.
-#### 1-2) 참조타입
+#### 2-2) 참조타입
 - 원시타입을 제외한 모든 데이터 타입 ex) 배열, 클래스, 인터페이스 ...
 - Java에서 실제 객체는 Heap 영역에 저장된다.
 - 참조타입은 Stack 영역에 실제 객체들의 주소를 저장하여, 객체를 사용할 때마다 참조변수에 저장된 객체의 주소를 불러와 사용한다.
@@ -70,7 +80,7 @@ https://github.com/HyeminNoh/Tech-Stack/blob/master/docs/Java/Generics.md
 - 동적 메모리 Heap 영역
   - 객체와 배열이 생성된다.
   - 참조타입 변수들이 생성된 객체, 배열의 주소를 Stack 영역에 저장한다.
-#### 1-3) 원시타입 vs 참조타입
+#### 2-3) 원시타입 vs 참조타입
 ||원시타입|참조타입|
 |:---:|:---:|:---:|
 |NULL|X|O|
@@ -78,15 +88,77 @@ https://github.com/HyeminNoh/Tech-Stack/blob/master/docs/Java/Generics.md
 |접근속도|빠름(스택 한번 참조)|느림(스택, 힙 참조 & 값이 필요할 때마다 언박싱 과정 필요)|
 |메모리 양|적음|많음|
 - cf) 엄청 큰 숫자를 복사해야 한다면, 참조값만 넘길 수 있는 참조타입이 속도면에서 좋을 수도 있다.
-#### 1-4) Boxing & Unboxing
-- Boxing: 원시타입 -> 참조타입
-- Unboxing: 참조타입 -> 원시타입
-- JAVA 1.5부터 Auto Boxing/Unboxing 기능이 추가되어, 명시적으로 원시타입을 참조타입으로 감싸주지 않아도 자동으로 Boxing/Unboxing을 해준다.
-  - ``` int i = 10;``` --> ```Integer integer = i; ```
-  - 메모리 누수의 원인이 될 수도 있다.
 <br><br>
 
-### 2. 오버라이딩 vs 오버로딩
+### 3. Wrapper Class
+- 기본타입(원시타입)의 자료형을 객체로 포장해주는 클래스이다.
+  - ex) 메소드의 매개변수로 객체타입만이 요구될 때 (generic, collection ...)
+- 각각의 타입에 해당하는 데이터를 인수로 받아, 해당 값을 가지는 객체로 변환해준다.
+- null 처리가 가능하다.
+  - SQL과 연동할 경우 처리가 용이하다.
+  - 직접적인 산술 연산은 불가능하다.
+- 산술 연산을 위한 클래스가 아니기 때문에, 인스턴스에 저장된 값을 변경할 수 없다.
+  - 값에 대한 변경은 불가능하지만, 새로운 값(객체)의 할당이나 참조는 가능하다.
+  - 참조타입끼리의 연산은 불가능하기 때문에 기본타입으로 변환하여 연산해야한다.
+  - cf) 기본타입은 선언 시 stack 영역에 저장되며, 산술 연산이 가능하다.
+- ```==``` 연산자를 사용하여 동등 연산을 하고자 할 때는, ```.longValue()```, ```.intValue()``` ... 메소드 등을 통해 원시타입으로 변경해서 비교 연산을 수행해야 한다.
+  - Wrapper Class는 객체이므로 ```==``` 연산자를 사용하면 값을 비교하는 것이 아니라, 두 인스턴스의 주소값을 비교한다.
+- 그러므로, 인스턴스에 저장된 값의 비교 연산을 제대로 사용하려면 ```equals()``` 메소드를 사용해야 한다.
+- 모두 ```java.lang``` package에 포함되어 제공된다.
+
+|원시타입|Wrapper 클래스|
+|:---:|:---:|
+|byte|Byte|
+|short|Short|
+|int|Integer|
+|long|Long|
+|float|Float|
+|double|Double|
+|char|Character|
+|boolean|Boolean|
+
+<br><br>
+
+### 4. Boxing & Unboxing
+- Boxing: 원시타입 ->  Wrapper Class (객체)
+- Unboxing:  Wrapper Class (객체) -> 원시타입
+```java
+// Boxing
+int i = 10;
+Integer num = new Integer(i);
+
+// Unboxing
+Integer num = new Integer(10);
+int i = num.intValue();
+```
+#### 4-1) Auto Boxing & Auto UnBoxing
+- JAVA 1.5부터 Auto Boxing/Unboxing 기능이 추가되어, **명시적으로 원시타입을 참조타입으로 감싸주지 않아도 컴파일러가 자동으로 Boxing/Unboxing을 해준다.**
+- 내부적으로 추가 연산 작업이 존재하므로, 불필요한 Auto Casting이 이루어지지 않도록 조심해야한다.
+- 메모리 누수의 원인이 될 수도 있다.
+  - Wrapper Class는 ```Immutable```한 특징을 가진다. 그러므로, Auto Boxing이 일어날 때마다 새로운 객체가 생성된다. (불필요한 객체가 생성될 가능성이 있다.)
+```java
+int i = 10;
+Integer num = i; // Auto Boxing
+
+List<Integer> list = new ArrayList<>();
+lists.add(10); // Auto Boxing
+
+Integer num = new Integer(10);
+int i = num; // Auto UnBoxing
+
+
+Integer num2 = new Integer(20);
+Integer num3 = new Integer(10);
+System.out.println(num1 < num2); // true
+System.out.println(num1 == num3); // false
+System.out.println(num1.equals(num3)); // true
+```
+<br><br>
+
+### 5. Upcasting & Downcasting
+<br><br>
+
+### 6. 오버라이딩 vs 오버로딩
 - 다형성과 관련있는 용어: 이를 사용하면 다형성을 높여준다.
 - 같은 이름의 다른 함수를 호출한다.
 
@@ -95,7 +167,7 @@ https://github.com/HyeminNoh/Tech-Stack/blob/master/docs/Java/Generics.md
 |메소드 이름|동일|동일|
 |매개변수의 개수, 타입, 순서|동일|다름|
 |반환 타입|동일|상관없음|
-#### 2-1) 오버라이딩(Overriding)
+#### 6-1) 오버라이딩(Overriding)
 - 상위 클래스 혹은 인터페이스가 가지고 있는 메소드를 하위 클래스에서 재정의해서 사용하는 것
 - 자식 클래스가 부모 클래스로부터 메소드를 그대로 받아서 재사용하기 위해 쓰는 것이다. 
 - 상속 관계에 있는 클래스 간에 같은 이름의 메소드를 정의한다.
@@ -106,7 +178,7 @@ https://github.com/HyeminNoh/Tech-Stack/blob/master/docs/Java/Generics.md
 - 생산성 & 유지보수에 효과적이다. 
 - 개발자의 실수를 방지하기 위해, 오버라이딩할 때 @Override 어노테이션을 쓰는 것을 권장한다.
 
-#### 2-2) 오버로딩(Overloading)
+#### 6-2) 오버로딩(Overloading)
 - 여러 개의 메소드가 같은 이름을 갖고 있으나, **매개변수의 자료형이나 인자의 수 또는 선언 순서를 다르게 하여 정의하는 것**
 -  한 클래스 내에서 같은 이름의 메소드를 여러번 정의한다.
 - 매개변수(자료형, 개수, 선언 순서)는 같고 **반환 타입이나 접근 제한자가 다른 경우는 오버로딩이 성립하지 않는다.**
@@ -114,7 +186,7 @@ https://github.com/HyeminNoh/Tech-Stack/blob/master/docs/Java/Generics.md
 - 다양한 상황에서 메소드가 호출될 수 있도록 한다.
 <br><br>
 
-### 3. Generic
+### 7. Generic
 ![generic](https://gmlwjd9405.github.io/images/basic-concepts-of-development/generics.png)
 - 메소드나 클래스에서 사용할 내부 데이터 타입을 컴파일 시에 미리 지정하는 방법이다.
 - 다양한 타입의 객체들을 다루는 메소드나 컬렉션 클래스에서 사용하며, 컴파일 과정에서 타입을 지정한다.
@@ -122,13 +194,13 @@ https://github.com/HyeminNoh/Tech-Stack/blob/master/docs/Java/Generics.md
 - 객체의 타입을 컴파일 시에 체크하기 때문에, 잘못된 타입이 사용될 수 있는 문제를 컴파일 과정에서 제거할 수 있다.
   - 다운 캐스팅이 필요 없다.
 
-#### 3-1) 장점
+#### 7-1) 장점
 - 메소드나 클래스 내부에서 사용되는 타입의 안정성을 제공한다.
 - API를 설계하는데 있어 보다 명확한 의사전달이 가능하다.
 - 형 변환을 생략할 수 있으므로 코드가 간결해진다.
   - 컬렉션 내부에서 들어온 값이 내가 원하는 값인지 별도의 로직 처리를 구현할 필요가 없다.
 
-#### 3-2) Generic 클래스 선언
+#### 7-2) Generic 클래스 선언
 ```java
 // 제네릭 타입 T를 선언
 class Box<T> { // class<Object>
@@ -162,7 +234,7 @@ b2.setItem(new Object()); // WARN: unchecked or unsafe operation.
   - T가 아닌 다른 것도 사용가능하다.
   - 상황에 맞게 의미 있는 문자를 선택해서 사용하는 것이 좋다. (T: type, E: element, K: key, V: value, ...)
 
-#### 3-3) 제한 사항
+#### 7-3) 제한 사항
 - 모든 객체에 동일하게 동작해야하는 static 멤버에는 타입변수 T를 사용할 수 없다.
   - T는 인스턴스 변수로 간주되기 떄문에, static에는 인스턴스 변수를 참조할 수 없다.
 - 제네릭 타입의 배열은 선언은 가능하나, 생성은 불가능하다.
@@ -176,7 +248,7 @@ b2.setItem(new Object()); // WARN: unchecked or unsafe operation.
   FruitBox<Toy> toyBox = new FruitBox<Toy>(); //error. Toy는 Fruit의 자손이 아님
   ```
 
-#### 3-4) 제네릭 메소드
+#### 7-4) 제네릭 메소드
 - 메소드의 선언부에 제네릭 타입이 선언된 메소드이다.
 ```java 
 static <T> void sort(List<T> list, Comparator<? super T> c)

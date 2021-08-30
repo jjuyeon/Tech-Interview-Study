@@ -2,7 +2,9 @@
 
 #### reference
 https://velog.io/@gillog/%EC%9B%90%EC%8B%9C%ED%83%80%EC%9E%85-%EC%B0%B8%EC%A1%B0%ED%83%80%EC%9E%85Primitive-Type-Reference-Type<br>
-https://github.com/WooVictory/Ready-For-Tech-Interview/blob/master/Java/%5BJava%5D%20%EC%98%A4%EB%B2%84%EB%9D%BC%EC%9D%B4%EB%94%A9%EA%B3%BC%20%EC%98%A4%EB%B2%84%EB%A1%9C%EB%94%A9.md
+https://github.com/WooVictory/Ready-For-Tech-Interview/blob/master/Java/%5BJava%5D%20%EC%98%A4%EB%B2%84%EB%9D%BC%EC%9D%B4%EB%94%A9%EA%B3%BC%20%EC%98%A4%EB%B2%84%EB%A1%9C%EB%94%A9.md<br>
+https://ltk3934.tistory.com/81<br>
+https://github.com/HyeminNoh/Tech-Stack/blob/master/docs/Java/Generics.md
 <hr>
 
 ## Question
@@ -16,9 +18,12 @@ https://github.com/WooVictory/Ready-For-Tech-Interview/blob/master/Java/%5BJava%
 <br><br>
 
 4. [오버라이딩과 오버로딩이 무엇이며 어떤 차이점이 있는지 설명해주세요.](#2-오버라이딩-vs-오버로딩)
+- 오버라이딩은 상속 받은 메소드의 내용만 변경하는 것이고, 오버로딩은 기존에 없던 새로운 메소드를 정의하는 것입니다.
+- 큰 차이점으로는 오버라이딩은 부모 클래스로부터 메소드를 그대로 받아 재사용하는 것이기 때문에 메소드 이름, 매개변수, 반환타입이 같아야합니다. 반면, 오버로딩은 메소드의 이름은 같으나, 매개변수의 개수, 자료형, 선언 순서가 다른 새로운 함수를 정의한다는 것입니다.
 <br><br>
 
-5. [Generic에 대해 설명해주세요.]()
+5. [Generic에 대해 설명해주세요.](#3-generic)
+- 제네릭은 메소드나 클래스에서 사용할 내부 데이터 타입을 컴파일 시에 미리 지정하는 방법입니다. 타입변수 ```<T>```를 사용하면서 다운 캐스팅이 필요없게 되었고, 클래스나 메소드 내부에서 사용되는 객체의 타입 안정성을 높일 수 있습니다.
 <hr>
 
 ## :nerd_face:	What I study
@@ -92,7 +97,7 @@ https://github.com/WooVictory/Ready-For-Tech-Interview/blob/master/Java/%5BJava%
 |반환 타입|동일|상관없음|
 #### 2-1) 오버라이딩(Overriding)
 - 상위 클래스 혹은 인터페이스가 가지고 있는 메소드를 하위 클래스에서 재정의해서 사용하는 것
-- 자식클래스가 부모 클래스로부터 메소드를 그대로 받아서 재사용하기 위해 쓰는 것이다. 
+- 자식 클래스가 부모 클래스로부터 메소드를 그대로 받아서 재사용하기 위해 쓰는 것이다. 
 - 상속 관계에 있는 클래스 간에 같은 이름의 메소드를 정의한다.
 - 메소드 이름, 매개변수, 반환타입이 같아야한다.
 - **접근지정자는 부모 클래스의 메소드보다 같거나 접근범위가 더 큰 접근지정자를 사용해야 한다.**
@@ -107,3 +112,76 @@ https://github.com/WooVictory/Ready-For-Tech-Interview/blob/master/Java/%5BJava%
 - 매개변수(자료형, 개수, 선언 순서)는 같고 **반환 타입이나 접근 제한자가 다른 경우는 오버로딩이 성립하지 않는다.**
 - 즉, 오버로딩된 메소드들은 **매개변수에 의해서만 구별될 수 있다.**
 - 다양한 상황에서 메소드가 호출될 수 있도록 한다.
+<br><br>
+
+### 3. Generic
+![generic](https://gmlwjd9405.github.io/images/basic-concepts-of-development/generics.png)
+- 메소드나 클래스에서 사용할 내부 데이터 타입을 컴파일 시에 미리 지정하는 방법이다.
+- 다양한 타입의 객체들을 다루는 메소드나 컬렉션 클래스에서 사용하며, 컴파일 과정에서 타입을 지정한다.
+  - 기존에는 Object 객체를 사용했지만, 이제는 ```<T>```를 사용하여 타입을 지정한다.
+- 객체의 타입을 컴파일 시에 체크하기 때문에, 잘못된 타입이 사용될 수 있는 문제를 컴파일 과정에서 제거할 수 있다.
+  - 다운 캐스팅이 필요 없다.
+
+#### 3-1) 장점
+- 메소드나 클래스 내부에서 사용되는 타입의 안정성을 제공한다.
+- API를 설계하는데 있어 보다 명확한 의사전달이 가능하다.
+- 형 변환을 생략할 수 있으므로 코드가 간결해진다.
+  - 컬렉션 내부에서 들어온 값이 내가 원하는 값인지 별도의 로직 처리를 구현할 필요가 없다.
+
+#### 3-2) Generic 클래스 선언
+```java
+// 제네릭 타입 T를 선언
+class Box<T> { // class<Object>
+  T item; // object
+
+  void setItem(T item) { // void method(Object)
+    this.item = item;
+  }
+
+  T getItem() { // return Object
+    return item;
+  }
+}
+
+Box<String> b = new Box<String>(); // T 대신 실제 타입 지정
+
+b.setItem(new Object()); // ERROR: String타입 이외의 타입은 지정불가
+b.setItem("ABC"); // OK: String타입만 가능
+
+// String item = (String)b.getItem(); 
+String item = b.getItem(); // 형변환 필요없음
+
+/* 호환성 - T를 사용 */
+Box b2 = new Box(); // OK: T는 Object로 간주된다.
+b2.setItem("ABC"); // WARN: unchecked or unsafe operation.
+b2.setItem(new Object()); // WARN: unchecked or unsafe operation.
+```
+- Box 클래스
+  - 어떤 타입이든 한 가지 타입을 정하여 넣을 수 있다.
+- T: 타입 변수
+  - T가 아닌 다른 것도 사용가능하다.
+  - 상황에 맞게 의미 있는 문자를 선택해서 사용하는 것이 좋다. (T: type, E: element, K: key, V: value, ...)
+
+#### 3-3) 제한 사항
+- 모든 객체에 동일하게 동작해야하는 static 멤버에는 타입변수 T를 사용할 수 없다.
+  - T는 인스턴스 변수로 간주되기 떄문에, static에는 인스턴스 변수를 참조할 수 없다.
+- 제네릭 타입의 배열은 선언은 가능하나, 생성은 불가능하다.
+  - ```new``` 연산자, ```instacneof``` 연산자는 컴파일 시점에 타입 T가 뭔지 정확하게 알아야 하기 때문에 T를 피연산자로 사용할 수 없다.
+- 제네릭 타입에 ```extends```를 사용하면, 특정 타입의 자손들만 대입할 수 있도록 제한할 수 있다.
+  ```java
+  class FruitBox<T extends Fruit>{ // Fruit의 자손만 타입으로 지정 가능
+    ArrayList<T> list = new ArrayList<T>();
+  }
+  FruitBox<Apple> appleBox = new FruitBox<Apple>(); // Apple은 Fruit의 자손
+  FruitBox<Toy> toyBox = new FruitBox<Toy>(); //error. Toy는 Fruit의 자손이 아님
+  ```
+
+#### 3-4) 제네릭 메소드
+- 메소드의 선언부에 제네릭 타입이 선언된 메소드이다.
+```java 
+static <T> void sort(List<T> list, Comparator<? super T> c)
+```
+- 제네릭 클래스의 타입 매개변수 T와 제네릭 메서드의 타입 매개변수 T는 서로 같은 문자를 쓰더라도 ***별개의 것***이라는 것을 잊지말자.
+- 제네릭 메서드는 제네릭 클래스가 아닌 일반 클래스에도 정의할 수 있다.
+- static 멤버에는 타입 매개변수를 사용할 수 없지만, static 메소드에서는 사용할 수 있다.
+- 메소드에 선언된 타입은 메소드 내에서만 지역적으로 사용되는 local value의 특성을 가진다.

@@ -11,7 +11,7 @@ https://github.com/HyeminNoh/Tech-Stack/blob/master/docs/Java/Generics.md
 1. [Java의 HashMap과 HashTable의 차이점을 설명해주세요.]()
 <br><br>
 
-2. [Java의 원시타입들은 무엇이 있으며 각각 몇 바이트를 차지하는지 설명해주세요.](#1-1-원시타입)
+1. [Java의 원시타입들은 무엇이 있으며 각각 몇 바이트를 차지하는지 설명해주세요.](#1-1-원시타입기본타입)
 <br><br>
 
 3. [String, StringBuffer, StringBuilder의 차이를 설명하세요.]()

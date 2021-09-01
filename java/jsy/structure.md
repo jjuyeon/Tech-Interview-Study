@@ -4,6 +4,7 @@
 https://velog.io/@gillog/%EC%9B%90%EC%8B%9C%ED%83%80%EC%9E%85-%EC%B0%B8%EC%A1%B0%ED%83%80%EC%9E%85Primitive-Type-Reference-Type<br>
 https://preamtree.tistory.com/15<br>
 https://blog.naver.com/PostView.nhn?isHttpsRedirect=true&blogId=thdansgur&logNo=220910298503<br>
+https://stage-loving-developers.tistory.com/8<br>
 https://github.com/WooVictory/Ready-For-Tech-Interview/blob/master/Java/%5BJava%5D%20%EC%98%A4%EB%B2%84%EB%9D%BC%EC%9D%B4%EB%94%A9%EA%B3%BC%20%EC%98%A4%EB%B2%84%EB%A1%9C%EB%94%A9.md<br>
 https://ltk3934.tistory.com/81<br>
 https://github.com/HyeminNoh/Tech-Stack/blob/master/docs/Java/Generics.md
@@ -24,10 +25,12 @@ https://github.com/HyeminNoh/Tech-Stack/blob/master/docs/Java/Generics.md
 - 박싱은 원시타입을 Wrapper class로 바꿔주는 것이고, 언박싱은 반대로 Wrapper class에서 원시타입으로 바꿔주는 것을 의미합니다. JAVA 1.5 부터 오토 박싱/오토 언박싱 기능이 추가되었는데, 명시적으로 원시타입을 참조타입으로 감싸주지 않아도 컴파일러가 자동으로 박싱/언박싱합니다.
 <br><br>
 
-5. [업캐스팅과 다운캐스팅의 차이에 대해 설명해주세요.]()
+5. [업캐스팅과 다운캐스팅의 차이에 대해 설명해주세요.](#5-2-casting)
+- 업캐스팅은 수퍼 클래스의 변수에 서브 클래스의 객체가 들어가는 것을 의미하고, 업캐스팅된 변수의 타입을 서브 클래스로 다시 되돌리는 것을 다운캐스팅이라고 합니다.
+- 서브 클래스 객체는 수퍼 클래스의 메소드를 상속 받기 때문에 수퍼 클래스의 변수에 들어가 수퍼 클래스인 것처럼 사용될 수 있습니다. 또한, 업캐스팅된 변수의 타입이 다시 서브 클래스로 돌아와 본인의 클래스 객체인 것처럼 사용할 수 있습니다.
 <br><br>
 
-6. [오버라이딩과 오버로딩이 무엇이며 어떤 차이점이 있는지 설명해주세요.](#2-오버라이딩-vs-오버로딩)
+1. [오버라이딩과 오버로딩이 무엇이며 어떤 차이점이 있는지 설명해주세요.](#2-오버라이딩-vs-오버로딩)
 - 오버라이딩은 상속 받은 메소드의 내용만 변경하는 것이고, 오버로딩은 기존에 없던 새로운 메소드를 정의하는 것입니다.
 - 큰 차이점으로는 오버라이딩은 부모 클래스로부터 메소드를 그대로 받아 재사용하는 것이기 때문에 메소드 이름, 매개변수, 반환타입이 같아야합니다. 반면, 오버로딩은 메소드의 이름은 같으나, 매개변수의 개수, 자료형, 선언 순서가 다른 새로운 함수를 정의한다는 것입니다.
 <br><br>
@@ -88,6 +91,7 @@ https://github.com/HyeminNoh/Tech-Stack/blob/master/docs/Java/Generics.md
 |접근속도|빠름(스택 한번 참조)|느림(스택, 힙 참조 & 값이 필요할 때마다 언박싱 과정 필요)|
 |메모리 양|적음|많음|
 - cf) 엄청 큰 숫자를 복사해야 한다면, 참조값만 넘길 수 있는 참조타입이 속도면에서 좋을 수도 있다.
+
 <br><br>
 
 ### 3. Wrapper Class
@@ -156,6 +160,119 @@ System.out.println(num1.equals(num3)); // true
 <br><br>
 
 ### 5. Upcasting & Downcasting
+- 변수의 데이터 타입을 바꿔야 할 때가 있다. (ex. int + double)
+- 변수의 데이터 타입을 바꿔주는 작업을 **타입의 형변환**이라고 한다.
+  - **Upcasting** : 자동 형변환, 묵시적 타입 변환
+  - **Downcasting** : 강제 형변환, 명시적 타입 변환
+
+#### 5-1) Upcasting
+- 프로그램 실행 도중에 자동으로 형변환이 일어나는 것
+- ***작은*** 메모리 크기의 데이터 타입 **->** ***큰*** 메모리 크기의 타입으로 변환
+  - 단, **메모리 크기에 상관없이 정수는 모든 실수 데이터 타입에 자동 형변환이 가능하다.**
+- 객체타입의 경우는 ***자식클래스***의 객체 **->** ***부모클래스*** 타입으로 변환
+  - 부모클래스로 변환되면, 부모클래스 본인의 메소드에는 모두 접근 가능하지만 자식클래스에는 접근이 불가능하다.
+- 별다른 문법이 적용되지 않는다.
+- ***[주의]*** 작은 크기에서 큰 크기의 데이터 타입으로 변환한다하더라도, **타입 범위가 다르다면 자동 형변환이 불가능하다 ! !**
+<br>
+
+![Upcasting](https://github.com/GimunLee/tech-refrigerator/raw/master/Language/JAVA/resources/java-promotion-casting-001.png)
+
+```java
+byte bNum = 10; // byte 데이터 타입
+int num = bNum; // byte 데이터 타입 변수 bNum을 int 데이터 타입 변수인 num에 저장
+
+char ch = 'A'; // char 데이터 타입
+int num = ch; // char 데이터 타입 변수 ch를 int 데이터 타입 변수 num에 저장 (65)
+
+byte bNum = 10; // byte 데이터 타입
+char ch = bNum; // char 데이터 타입 (Compile Error - char는 음수 저장이 불가능하다.)
+
+float fNum = 10.0; // float 데이터 타입
+long lNum = fNum; // long 데이터 타입 (Compile Error - 실수형에서 정수형으로 자동 형변환은 불가능하다.)
+
+// 상속 관계에서의 자동 형변환
+Parent parent = new Child(); // Child 클래스에는 Parent 클래스의 속성이 포함되어 있다.
+```
+
+#### 5-2) Downcasting
+- Upcasting에 반대되는 캐스팅
+- ***큰*** 메모리 크기의 타입 **->** ***작은*** 메모리 크기의 타입으로 변환
+- 객체타입의 경우는 ***부모클래스***의 객체 **->** ***자식클래스*** 타입으로 변환
+- 명시적으로 타입을 지정해야 한다.
+```java
+int num = 1; // int 데이터 타입
+byte bNum = (byte) num; // byte 데이터 타입 범위 안에 충분히 들어가는 값(1)
+
+int num = 2222222222; // int 데이터 타입
+byte bNum = (byte) num; // byte 타입의 범위를 넘어감 (Error X, 그러나 실제 결과 값은 overflow로 엉뚱한 값이 나온다.)
+
+// 상속 관계에서의 형변환
+Parent p = new Child(); // 업캐스팅
+Child c = (Child) p; // 다운캐스팅 (업캐스팅된 특성을 되돌리기 위해 다운캐스팅을 진행한다.)
+```
+#### cf) 헷갈리는 상속 관계에서의 Casting [참고](https://github.com/gyoogle/tech-interview-for-developer/blob/master/Language/%5Bjava%5D%20Casting(%EC%97%85%EC%BA%90%EC%8A%A4%ED%8C%85%20%26%20%EB%8B%A4%EC%9A%B4%EC%BA%90%EC%8A%A4%ED%8C%85).md)
+```java
+class Parent {
+	int age;
+
+	Parent() {}
+
+	Parent(int age) {
+		this.age = age;
+	}
+
+	void printInfo() {
+		System.out.println("Parent Call!!!!");
+	}
+}
+
+class Child extends Parent {
+	String name;
+
+	Child() {}
+
+	Child(int age, String name) {
+		super(age);
+		this.name = name;
+	}
+
+	@Override 
+	void printInfo() {
+		System.out.println("Child Call!!!!");
+	}
+
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Parent p = new Child(10. "student"); // Parent 클래스의 변수, 메소드만 접근할 수 있다.
+        System.out.println(p.age); // 10
+        System.out.println(p.name); // Error 발생, Parent 클래스의 변수만 접근 가능
+        p.printInfo(); // Child Call!!!!
+
+        Child c = (Child) p; // 다운캐스팅
+        System.out.println(c.age); // 10
+        System.out.println(c.name); // student
+        
+        Child c = (Child) new Parent(); // Runtime Error(ClassCastException) 발생, 컴파일할 때는 데이터형의 일치만 확인한다.
+    }
+}
+```
+
+#### 5-3) 형변환 연산
+- 기본적인 사칙연산은 같은 타입의 피연산자 간에만 수행된다.
+- 서로 다른 데이터 타입의 피연산자가 있을 경우, 두 피연산자 중 크기가 큰 타입으로 자동 형변환이 된 후에 연산이 수행된다.
+```java
+// int 타입 변수값과 double 타입 변수값을 더해서 double 타입의 결과가 나옴.
+int num = 10;
+double dNum = 10.5;
+double result = num + dNum; 
+
+// int 타입의 결과를 얻고 싶다면, double 타입 변수를 다운캐스팅하면 된다.
+int num = 10;
+double dNum = 10.5;
+int result = num + (int) dNum;
+```
 <br><br>
 
 ### 6. 오버라이딩 vs 오버로딩
@@ -184,6 +301,7 @@ System.out.println(num1.equals(num3)); // true
 - 매개변수(자료형, 개수, 선언 순서)는 같고 **반환 타입이나 접근 제한자가 다른 경우는 오버로딩이 성립하지 않는다.**
 - 즉, 오버로딩된 메소드들은 **매개변수에 의해서만 구별될 수 있다.**
 - 다양한 상황에서 메소드가 호출될 수 있도록 한다.
+
 <br><br>
 
 ### 7. Generic

@@ -1,6 +1,23 @@
+## Java의 데이터 타입
+### primitive 데이터 타입
+- 정수타입 : byte, short, int, long
+- 소수타입 : float, double
+- bool 타입 : boolean
+- 문자타입 : char 
+
+각 primitive 별 참조타입이 존재한다.
+
+### Wrapper 타입
+- 정수타입 : Byte, Short, Integer, Long
+- 소수타입 : Float, Double
+- bool 타입 : Boolean
+- 문자타입 : Character
+
 ## 오토박싱과 언박싱 개념 등장
+Collection 자료구조가 추가되면서 preimitive 타입을 Collection에 담을 수 없어 내부로 감싼 Wrapper 타입을 활용하게 되었다.    
 JDK1.5 이전에는 기본형과 참조형 간의 연산이 불가능해서 기본형을 래퍼 클래스 객체로 만들어서 연산했다.  
-컴파일러가 자동으로 코드를 변환해주어 기본형과 참조형 간에 연산이 가능해졌다.
+컴파일러가 자동으로 코드를 변환해주어 기본형과 참조형 간에 연산이 가능해졌다.    
+
 
 ```Java
 // 컴파일 전
@@ -30,6 +47,9 @@ list.add(100); // 100 -> new Integer(100) [autoboxing]
 
 int value = list.get(0); // Integer(100) -> 100 [unboxing]
 ```
+
+## 오토박싱과 언박싱의 단점
+컴파일러가 자동으로 지원해주어서 편리하지만, 다른 타입간의 형변환은 성능에 영향을 끼치므로 지양하는 것이 좋다.
 
 
 # Collections Framework
@@ -71,7 +91,7 @@ int value = list.get(0); // Integer(100) -> 100 [unboxing]
 
 
 ## 람다식
-익명 함수라고도 하며, 메서드를 하나의 식으로 표현한 것  
+Java 8에서 새로 추가된 것 중 하나이다. 익명 함수라고도 하며, 메서드를 하나의 식으로 표현한 것을 말한다.       
 모든 메서드는 클래스에 포함되어야 하므로 클래스를 만들어 객체를 생성해야 메서드를 호출할 수 있다. 
 하지만 람다식은 그 자체로서 메서드 역할을 수행할 수 있어서 변수처럼 다루는 것이 가능하다.
 
@@ -115,3 +135,16 @@ int square(int x) {
 x -> x * x
 ```
 
+## 함수형 인터페이스
+람다식으로 정의된 익명 객체를 호출하기 위해서는 참조 변수가 필요하다. 이때, 참조 변수의 타입으로 람다식과 동등한 메서드가 정의된 인터페이스를 사용할 수 있다.
+즉, 람다식을 다루기 위한 인터페이스를 말한다.      
+람다식과 인터페이스의 메서드가 1:1로 연결되기 위해, 오직 하나의 추상 메서드만 정의되어 있어야 한다는 제약이 있다.    
+```Java
+MyFunction f = (int a, int b) -> a > b ? a : b;
+int bif = f.max(5, 3) // 호출
+
+@FunctionalInterface
+interface MyFunction {
+  public abstract int max(int a, int b);
+}
+```

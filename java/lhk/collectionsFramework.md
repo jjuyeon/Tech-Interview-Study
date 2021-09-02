@@ -78,7 +78,7 @@ int value = list.get(0); // Integer(100) -> 100 [unboxing]
 ## 람다식 작성하기
 
 1. 메서드에서 이름과 반환타입을 제거하고 매개변수 선언부와 몸통 사이에 `->` 를 추가한다.
-```
+```Java
 // 기존 메서드
 int max(int a, int b) {
   return a > b ? a : b;

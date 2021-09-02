@@ -1,9 +1,13 @@
 > [💡#](#casting) 업캐스팅과 다운캐스팅의 차이에 대해 설명해주세요.
-> Upcasting이란 부모 클래스를 상속받은 자식 클래스의 객체를 부모 클래스 타입 레퍼런스 변수가 가리키도록 하는 것을 의미합니다. 이 때, 자식 클래스의 필드에는 접근할 수 없습니다. 
-> Downcasting이란 Upcasting된 객체를 다시 자식 클래스 타입의 레퍼런스 변수가 가리키도록 하는 것을 의미합니다. 이 때 명시적 형변환을 해주어야 하며, 자식 클래스의 모든 필드에 접근 가능합니다.
+> - Upcasting이란 부모 클래스를 상속받은 자식 클래스의 객체를 부모 클래스 타입 레퍼런스 변수가 가리키도록 하는 것을 의미합니다. 이 때, 자식 클래스의 필드에는 접근할 수 없습니다. 
+> - Downcasting이란 Upcasting된 객체를 다시 자식 클래스 타입의 레퍼런스 변수가 가리키도록 하는 것을 의미합니다. 이 때 명시적 형변환을 해주어야 하며, 자식 클래스의 모든 필드에 접근 가능합니다.
 > 
 > [💡#](#string_pool) String형 객체를 ""로 만들었을 때와 new 키워드를 이용해서 만들었을 때의 차이점은? (String Pool)
-> 큰따옴표를 이용해서 String 객체를 만들었을 때 에는 String Pool에 저장됩니다. 이 때, 이미 등록되었던 String인지 확인하는 과정을 거칩니다. new 키워드를 이용했을 때 에는 String Pool이 아닌 Heap에 String 객체가 저장되며, 같은 String 값을 가지고 있더라도 다른 객체로 생성됩니다.
+> - 큰따옴표를 이용해서 String 객체를 만들었을 때 에는 String Pool에 저장됩니다. 이 때, 이미 등록되었던 String인지 확인하는 과정을 거칩니다. new 키워드를 이용했을 때 에는 String Pool이 아닌 Heap에 String 객체가 저장되며, 같은 String 값을 가지고 있더라도 다른 객체로 생성됩니다.
+>
+> [💡#](#wrapper_class) Wrapper Class에 대해 설명해주세요. + 오토 박싱과 언박싱
+> - java의 primitive data type과 대응되는 Collection Class를 wrapper class라고 합니다.
+> - primitive data를 wrapper class 인스턴스로 변환하는 작업을 boxing, 그 반대를 unboxing이라고 합니다.
 
 # Casting
 
@@ -140,6 +144,69 @@ firth와 sixth를 비교했을 때 에도 firth는 String Pool, sixth는 Heap에
 
 <br>
 
+# Wrapper Class
+
+Wrapper Class는 primitive data type을 캡슐화하는 클래스이며, 다른 클래스의 객체 인스턴스 및 메소드를 만들기 위해 사용한다.
+
+Primitive Data Type에 Object처럼 사용하기 위해 Class로 바인딩시키는 역할이라고 할 수 있다.
+
+1️⃣ primitive type은 class의 generic으로 사용할 수 없고, 2️⃣Object의 하위 클래스를 요구하는 메소드가 있을 때
+
+일반 primitive data type을 Wrapper class로 감싸서 사용한다.
+
+일단 primitive data type을 이용하면 일정 단위의 데이터 저장을 위해 Array만을 이용할 수 있지만, 원시 데이터 타입을 wrapper class로 감싸면 java의 다양한 collection을 이용할 수 있다.
+
+따라서 Wrapper Class는 주로 Primitive Data Type을 저장할 Java API의 Collection 클래스의 객체를 만드는데 사용된다.
+
+<br>
+
+|Primitive Data Type|Wrapper Class|
+|-|-|
+|byte|Byte|
+|short|Short|
+|int|Integer|
+|long|Long|
+|float|Float|
+|double|Double|
+|char|Character|
+|boolean|Boolean|
+
+<br>
+
+![image](https://user-images.githubusercontent.com/30489264/131839686-ee3027fc-8852-48ff-86ff-3e2a2b9d0892.png)
+
+이 때 primitive data를 wrapper class 인스턴스로 변환하는 작업을 Boxing, 그 반대를 Unboxing이라고 한다.
+
+JDK 1.5버전 부터는 Java Compiler가 박싱과 언박싱을 자동으로 처리해주는 Auto Boxing, Auto Unboxing이 지원된다
+
+    public class Wrapper02 {
+    public static void main(String[] args) {
+        Integer num1 = new Integer(7); // 박싱
+        Integer num2 = new Integer(3); // 박싱
+
+ 
+        int int1 = num1.intValue();    // 언박싱
+        int int2 = num2.intValue();    // 언박싱
+ 
+①      Integer result1 = num1 + num2; // 10 
+②      Integer result2 = int1 - int2; // 4
+③      int result3 = num1 * int2;     // 21
+    }
+}
+
+물론 Wrapper Class의 Instance의 value가 같다고 해서 (==)연산자의 결과값이 true인 것은 아니다(인스턴스의 주소 값을 비교하기 때문).
+
+wrapper class의 instance의 동등 비교를 하기 위해서는 equals() 메소드를 사용해야 한다.
+
+이 때 명확히 구분해야 하는 것은 Primitive Wrapper Class가 Primitive Type임을 의미하지 않는다는 점 이다.
+
+Wrapper Class는 data type이 할당된 변수와는 달리, primitive data type을 상속받음과 동시에 캡슐화로 숨기면서 인스턴스화된 객체 및 메소드를 정의한다.
+
+<br>
+
 # 참고자료
 
 > https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=dlaxodud2388&logNo=221642221204
+> www.tcpschool.com/java/java_api_wrapper
+> en.wikipedia.org/wiki/Primitive_wrapper_class_in_Java
+> docs.oracle.com/javase/7/docs/api/java/lang/Integer.html

@@ -61,9 +61,18 @@ int value = list.get(0); // Integer(100) -> 100 [unboxing]
 - 중복을 허용한다.
 
 ### 구현 클래스
-- ArrayList
-- LinkedList
+- ArrayList 
+  - 기존의 Vector를 개선한 것으로, Vector보다 사용을 권장한다.
+  - 원하는 데이터에 접근하는데 빠르다.
+  - 데이터 추가/삭제 시 이후 요소들도 한 칸씩 이동해줘야해서 데이터 개수가 많을수록 시간이 오래걸린다. 
+  - 크기를 변경할 수 없다.
+- LinkedList  
+  - 데이터 추가/삭제가 빠르다. 
+  - 데이터에 접근하는 데 느리다.
+  - 데이터가 많을수록 접근성이 떨어진다. 
 - Stack
+  - Vector를 상속받아 구현 
+  - 수식 계산, 괄호검사, 웹브라우저 뒤로가기/앞으로가기
 - Vector
 
 
@@ -74,7 +83,11 @@ int value = list.get(0); // Integer(100) -> 100 [unboxing]
 
 ### 구현 클래스
 - HashSet
+  - 가장 대표적인 클래스
+  - 중복된 용소를 추가하려고하면 false를 반환하여 실패를 알린다.
 - TreeSet
+  - 이진 검색 트리 자료구조의 형태로 데이터를 저장한다.
+  - 이진 검색 트리의 성능을 향상시킨 레드블랙트리로 구현되어 있다.
 
 
 ## Map
@@ -85,9 +98,14 @@ int value = list.get(0); // Integer(100) -> 100 [unboxing]
 
 ### 구현 클래스
 - HashMap
+  - Hashtable보다 새로운 버전인 HashMap 사용 권장 (속도 향상)
+  - 많은 양의 데이터를 검색하는데 뛰어난 성능을 가진다. 
 - TreeMap
+  - 정렬과 검색에 적합
 - Hashtable
+  - 동기화를 하기때문에 속도가 느리다. 
 - Properties
+  - Hashtable을 상속받아서 구현 
 
 
 ## 람다식

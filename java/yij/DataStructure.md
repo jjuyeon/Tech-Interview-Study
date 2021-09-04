@@ -204,6 +204,45 @@ Wrapper Class는 data type이 할당된 변수와는 달리, primitive data type
 
 <br>
 
+### ✅ Wrapper Class의 Boxing, Unboxing 응용
+
+```
+for (Integer i = 0; i < 10; i++ ){
+	...
+}
+```
+
+위와 같은 코드가 동작하는지, 동작한다면 어떤 방식인지 설명하라는 면접 질문을 들엇습니다
+
+> 산술 연산을 위한 클래스가 아니기 때문에, 인스턴스에 저장된 값을 변경할 수 없다.
+> - 값에 대한 변경은 불가능하지만, 새로운 값(객체)의 할당이나 참조는 가능하다.
+
+라는 수연님의 답변을 보고, 위의 코드에 대한 동작을 생각해봤습니다.
+
+1. 선언부 <code>Integer i = 0</code>에서 0이 auto boxing되어 i에 할당된다.
+2. 증감부 <code>i++</code>을 만날 때, i안에 담겨있던 값을 꺼내서 ++ (primitive data type에만 가능하므로 unboxing)한 뒤 i에 다시 넣는다.
+3. 이 때, 선언부에서 생성한 객체의 value 값이 변경되는 것이 아닌, 새로운 값(객체)가 할당되어 i에 들어가는 것 이다.
+
+
+```
+Integer k = 0;
+for (Integer i = k; i < 3; i++ ){
+	System.out.println(i);
+}
+System.out.println(k);
+
+// 출력 결과
+// 0
+// 1
+// 2
+// 3
+// 0
+```
+
+따라서 위의 코드도 k의 값에 변함이 없다.
+
+<br>
+
 # 참고자료
 
 > https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=dlaxodud2388&logNo=221642221204

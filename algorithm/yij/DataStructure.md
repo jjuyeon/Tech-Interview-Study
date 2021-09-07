@@ -231,6 +231,19 @@ Queue의 최대 size가 고정되어 있으므로 그 이상의 element를 관�
 
 <br>
 
+## Stack을 이용한 Queue 구현
+
+두 개의 Stack을 이용하면 Queue를 구현할 수 있습니다.
+
+![image](https://user-images.githubusercontent.com/30489264/132338141-bf0f5d4e-aef0-432b-8684-6a13f66b92fa.png)
+
+1. Enqueue 연산: 1번 큐에 Insert한다 - **O(1)**
+2. Dequeue 연산
+   - 2번 큐가 비었다면 1번 큐에 있는 모든 원소를 pop하면서 2번큐에 차례로 Insert한다 - **O(N)**
+   - 2번 큐에 element가 있다면 2번 큐를 pop한다
+
+<br>
+
 # Tree
 
 우리는 Computer Science에서 트리가 뭔가요?라고 한다면

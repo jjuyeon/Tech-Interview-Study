@@ -1,8 +1,89 @@
-> 'Stack, Queue, Tree, Heap'의 특징을 설명해주세요.
+> ❔) 'Stack, Queue, Tree, Heap'의 특징을 설명해주세요.
+> 
+> 💬
 > Stack: LIFO 구조를 가진 선형 자료구조 입니다. top이라는 포인터를 가지며, 해당 포인터가 가리키는 위치에만 삽입/삭제/원소 반환이 가능합니다. 주로 함수의 콜 스택, 브라우저의 뒤로가기에서 사용합니다.
 > Queue: FIFO 구조를 가진 선형 자료구조 입니다. front, rear라는 두 개의 포인터를 가지며 front에서 삭제/원소 반환, rear에서 삽입이 가능합니다. 주로 CPU 스케줄링에서 사용합니다.
 > Tree: Connected + Acyclic(연결되어 있고, 사이클이 없는) 그래프의 한 종류입니다. 주로 루트를 가진 Rooted Tree로 많이 사용합니다. 이진 탐색 트리, 힙, 레드블랙 트리 등 다양한 자료구조들의 기본이 됩니다.
 > Heap: Complete Binary Tree의 한 종류로, 각 parent가 자신의 child node의 value보다 작은지/큰지에 따라 Min-Heap인지 Max-Heap으로 분류할 수 있습니다. Priority Queue 혹은 Heap Sort에서 활용합니다.
+> 
+> ❔) Array와 LinkedList의 차이가 무엇인가요?
+> 
+> 💬 Array와 Linked List의 대표적인 차이는 **Size 고정 여부, 메모리 연속 할당 여부**입니다.
+> Array는 선언 당시 Size가 고정되어 있고, 연속적으로 메모리가 할당되어 있습니다. 상대적으로 조회 속도는 빠르고, 삽입/삭제 속도는 느립니다.
+> Linked List는 Size가 가변적이고, 불연속적으로 메모리에 할당되어 있습니다.
+> 따라서 상대적으로 조회 속도는 느리지만 삽입/삭제 속도는 빠릅니다.
+
+
+# Array, Linked List
+
+Array와 Linked List는 각기 다른 구조, capacity 전략, 메모리 방식 등이 다르다.
+
+## Array
+
+- 선언 시 size가 고정되어 있다.
+  - 기존 size보다 더 많이 저장하려면 새로운 배열을 할당해야 한다.
+- 연속적인 메모리 공간에 할당된다.
+  - N차원 배열이라도 연속적인 공간에 할당되기 때문에 시작 메모리 주소, index만 알면 빠르게 element의 위치를 알아낼 수 있다.
+  - 👉 조회 시간 복잡도가 O(1)로 빠르다
+- 위의 특성 때문에, Insert/Delete 연산에는 불리하다.
+  - 배열의 중간 위치에 element를 삽입하거나 삭제하고 싶을 때에는, (메모리가 연속적이기 때문에) 뒤에 위치한 elements들을 전부 한 칸씩 한 칸씩 밀거나, 당겨야 한다.
+  - 👉 삽입/삭제 시간 복잡도가 O(N)으로 느리다.
+
+<br>
+
+## Linked List
+
+Linked List는 아이템들이 연결된 형태로 리스트를 관리하는 자료구조이다.
+기본적으로 element를 저장할 때 item(value)를 저장하는 필드, 다음 Item의 위치를 가리키는 필드로 구성되는데 이를 **Node**라고 한다.
+
+<br>
+
+> 💡 면접 빈출 질문으로 Linked List의 연산에 대한 Pseudo Code에 대해 물어보는 경우가 있으니, 이는 꼭 알아두고 갑시다 ❗
+
+<br>
+
+### Linked List 종류
+
+Doubly Circular Linked List도 있지만 Doubly와 Circular 특성을 합친 것 이기에 생략
+
+||Singly-Linked-List|Doubly-Linked-List|Circular-Linked-List|
+|-|-|-|-|
+|Node 구조|value<br>next|value<br>next<br>prev|value<br>next<br>prev|
+|Last Node의 next|NULL|NULL|HEAD|
+|Linked List를 가리키는 포인터|HEAD|HEAD|LAST|
+
+<br>
+
+### Linked List 특징
+
+- Linked List의 관리를 위해 HEAD(또는 LAST)의 포인터 하나의 정보만 가지고 있다.
+  - 각각의 Node들이 독립적인 메모리 공간에 할당되고, 다음 Element의 주소에 대해서만 가지고 있다.
+  - 👉 조회 시간복잡도가로 O(N)으로 느리다.
+- 포인터라는 특성 덕분에, 삽입/삭제 연산은 빠르다.
+  - 새로운 Node를 만들어서 Element를 가리키는 포인터들에 대해서만 변화를 준다.
+  - 👉 삽입/삭제 시간복잡도가 O(1)로 빠르다.
+
+<br>
+
+## Array 🆚 Linked List
+
+✅ Linked List는 Singly Linked List 가정
+
+||Array|Linked List|
+|-|-|-|
+|Get|**O(1)**|O(N)|
+|Insert At First|O(N)|**O(1)**|
+|Insert At Middle|O(N)|O(N)|
+|Insert At Last|O(N)|O(N)|
+|Delete At First|O(N)|**O(1)**|
+|Delete At Middle|O(N)|O(N)|
+|Delete At Last|O(N)|O(N)|
+
+👉 다룰 데이터의 size가 가변적이고 삽입/삭제가 빈번히 발생한다면 **Linked List**
+👉 다룰 데이터의 size가 고정적이고 삽입/삭제의 빈도보다 조회/수정이 자주 발생한다면 **Array**
+를 사용하는 것이 좋다.
+
+<br>
 
 # Stack
 
@@ -524,3 +605,5 @@ Node p와 p의 child node 중 큰 값을 가진 Node에 대해, Heap Property를
 |Delete<br>시간복잡도|O(1)|O(1)|O(logN)|O(logN)|
 |접근 가능한 영역|top|front, rear|All|top|
 |Linear 여부|O|O|X|X|
+
+<br>

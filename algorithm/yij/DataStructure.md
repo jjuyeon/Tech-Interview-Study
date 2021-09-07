@@ -224,3 +224,58 @@ int dequeue(Queue* q){
 </details>
 
 Queue의 최대 size가 고정되어 있으므로 그 이상의 element를 관리할 수는 없지만, 재배치할 필요가 없다. 모든 연산은 O(1)에 가능하다.
+
+<br>
+
+# Tree
+
+우리는 Computer Science에서 트리가 뭔가요?라고 한다면
+
+![image](https://user-images.githubusercontent.com/30489264/132245788-3253ac27-35c2-4be5-9ae7-57958b912153.png)
+
+이러한 그림으로 대답하는 경우가 있다.
+이것은 정확하게는 Rooted Tree(루트가 존재하는 트리)라고 한다.
+
+정확한 트리의 정의는 **Connected + Acyclic의 성질을 가진 그래프의 형태**를 트리라고 한다. 
+
+<br>
+
+![image](https://user-images.githubusercontent.com/30489264/132268868-d368235c-edda-42d2-a162-fb45e7ffced6.png)
+
+1. Connected: Tree 상의 모든 Node는 연결되어 있어야 한다.
+2. Acyclic: 특정 Node에서 자기 자신으로 가는 경로는 존재하지 않는다.
+
+<br>
+
+흔히 구현하는 트리는 Rooted Tree를 의미하며, 간단한 일반적 정의와 Recursive한 정의로 나눌 수 있다.
+
+<br>
+
+## Rooted Tree의 Non-Recursive 정의
+
+: 데이터를 지닌 Node와, Node들을 연결해주는 Directed Edge의 집합으로 이루어진다. Edge의 방향은 Parent Node에서 Child Node로 향한다. Tree 상의 모든 Node K에 대해, Root에서 K로의 유일한 Path가 존재한다.
+
+- Root Node: In-degree가 0인 Node
+- Leaf Node: Child Node가 없는 Node
+- Sibling: 같은 부모 노드를 가진 Node들의 관계
+- Ancestor: Node u에서 Node v로의 Path가 존재할 경우, u는 v의 Ancestor이다.
+- Decendant: Node u에서 Node v로의 Path가 존재할 경우, v는 u의 Decendant이다.
+
+## Rooted Tree의 Recursive 정의
+
+- Base Case: Single Node는 Tree이다.
+- Recursive Step: 1️⃣ Root + 0개 이상의 Subtree와 2️⃣ Root에서 각각의 Subtree들의 Root로 향하는 Edge는 👉Tree이다.
+
+## Tree 용어
+
+![image](https://user-images.githubusercontent.com/30489264/132269884-15d6b05a-a992-49f4-8874-c604939a8665.png)
+![image](https://user-images.githubusercontent.com/30489264/132269875-00ffde67-f14b-4fd6-aeae-f73447174635.png)
+
+|용어|설명|
+|-|-|
+|Degree|해당 Node의 Child 수|
+|Height|해당 Node에서 도달할 수 있는 아무 Leaf Node까지 가장 긴 Path의 길이|
+|Depth|Root에서 해당 Node까지의 Path의 길이|
+|Level|Depth + 1|
+
+트리는 계층적인 구조를 나타내는 Non-Linear Data Structure로 활용할 수 있다. 특히, 그 모든 Node의 degree가 최대 N인 N-ary Tree 중에서도 Binary Tree를 많이 사용한다.

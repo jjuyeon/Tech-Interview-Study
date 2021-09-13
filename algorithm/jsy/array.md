@@ -1,4 +1,4 @@
-# :question: Array, LinkedList
+# :question: Array, ArrayList, LinkedList
 
 #### reference
 https://girawhale.tistory.com/8
@@ -67,7 +67,7 @@ https://girawhale.tistory.com/8
 
 <br>
 
-- 일반적으로 검색, 수정을 자주 사용한다면, `Array / ArrayList`
+- 일반적으로 검색, 수정을 자주 사용한다면, `Array , ArrayList`
   - 데이터의 크기가 고정적일 때, `Array`
   - 데이터의 크기가 가변적일 때, `ArrayList`
 - 잦은 삽입, 삭제가 발생한다면, `LinkedList`

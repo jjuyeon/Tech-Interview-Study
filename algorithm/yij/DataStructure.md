@@ -694,6 +694,29 @@ Case4의 경우도 마찬가지다.
 
 <br>
 
+# Minimum Spanning Tree
+
+: **(Weighted) Connected Graph G**가 주어졌을 때, 다음을 만족하는 *G의 부분 그래프*를 말한다.
+
+G' = (V(G), T) (G의 Vertex Set과 일치하는 Vertex Set을 갖는다)
+
+1️⃣ G'은 **Connected**하다
+2️⃣ G'을 포함하는 Edge의 Cost 합이 (모든 경우의 수 중) 최소가 되어야 한다
+
+<br>
+
+> Q) G의 부분 그래프인데 왜 Tree인가?
+> A) Tree의 정의는 Connected & Acyclic Graph이다. 이 때, 2번 조건에서 Edge Cost 합이 최소가 되는 Sub Graph는 Cycle을 가질 수 없다 ❗❗
+> 만약 G'의 edge T를 선택하는 과정에서 cycle이 생긴하면, 해당 cycle에 속한 edge 중 아무런 edge 하나만 제거해도 Connected 성질을 만족하기 때문에 cost 합은 줄어든다. 따라서 2번 성질을 만족하면 자동으로 Acyclic Graph가 되고, 1번 성질에 의해 Tree가 되는 것 이다.
+
+1번 조건만 만족하는 Subgraph는 **Spanning Tree**라 한다.
+
+네트워크 회선의 설치 cost를 최소로 하는 시나리오에서 MST가 활용될 수 있다.
+
+MST를 구하는 두 가지 알고리즘은 [Kruskal's Algorithm](Algorithm.md), [Prim Algorithm](Algorithm.md)이 있다.
+
+<br>
+
 # Stack, Queue, Tree, Heap 비교
 
 ✅ Tree는 일반 Binary Tree 기준

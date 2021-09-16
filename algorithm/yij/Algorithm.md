@@ -1,5 +1,154 @@
 > [💡](#String) 문자열 비교 알고리즘들에 대해서 설명해주세요
 
+# MST Algorithm
+
+: Connected Graph에서 Minimum Spanning Tree를 구하는 알고리즘이다. 크루스칼, 프림 알고리즘 둘 다 **Greedy Algorithm**에 기반한다. 
+
+<br>
+
+> Greedy Algorithm
+> : 알고리즘의 각 Step 마다 현재 상태에서 최적의 해를 만드는 것을 선택해 나가는 알고리즘. 일부 최적화 문제에 대해 global-optimal solution을 준다.
+
+<br>
+
+## Kruskal's Algorithm
+
+: 현재 가지고 있는 Edge Set에 추가해도 **Cycle이 생기지 않는 Edge들 중 가장 Cost가 작은 Edge를 추가**해가며 MST를 생성하는 알고리즘.
+
+👉 Edge Set T에 Edge e를 추가해도 spanning tree의 조건을 만족할 때, T + e는 feasible하다.
+
+해당 과정을 통해 구해낸 결과물은 반드시 Connected Graph이다.
+
+![](https://upload.wikimedia.org/wikipedia/commons/5/5c/MST_kruskal_en.gif)
+
+<br>
+
+> Greedy Algorithm에 의해 크루스칼 알고리즘의 성질은 모든 Step에서 두 가지 특성을 만족합니다.
+> 1️⃣ Feasibility: 가용성 👉 중간 결과물이 원하는 성질을 해치지 않는가?
+> 2️⃣ Optimality: 최적성 👉 중간 결과물에서의 선택이 실제 최적의 선택인가?
+
+크루스칼 알고리즘의 결과물 Sub Graph G'은 항상 **1️⃣ Connected Graph** 이며, **2️⃣ 모든 Edge의 Cost가 다를 때 유일한 MST를 반환**한다.
+
+<br>
+
+### Pesudo Code
+```
+Sort edges by weight and assume w₁≤w₂≤..≤wⁿ
+T is empty (T will store edges of a MST)
+for i = 1 to m do
+    if (T+i is feasible (does not contain a cycle))
+    add i to T
+return the set T
+```
+
+이 때, 시간복잡도는 O(m²)이다.
+
+Union-Find 자료구조를 이용하면 시간 복잡도를 줄일 수 있다.
+
+<br>
+
+## Kruskal Algorithm With Union-Find
+
+1. Kruskal's Algorithm의 중간 결과물을 Forest (tree들의 set)으로 저장한다.
+2. 새로 추가할 edge가 Forest 상의 두 tree T1, T2를 이어줄 경우 해당 edge를 추가해서 두 Tree를 하나로 합친다.
+3. Edge가 같은 Tree 상의 두 Vertex에 incident하면 해당 edge는 추가하지 않는다.
+
+<br>
+
+
+### Pesudo Code
+```
+procedure kruskal(G, w)
+Input:      A connected undirected graph G=(V, E) with edge weights w(e)
+Output:     A minimum spanning tree defined by the edges X
+
+for all u ∈ V:
+    makeset(u)
+
+X = {}
+Sort the edges E by weight
+for all edges {u,v} ∈ E, in increasing order of weight:
+    if find(u) ≠ find(v):
+        add edge {u,v} to X
+        union(u,v)
+```
+
+1. makeset() n번 -> O(n)
+2. Edge Sorting -> O(m log n)
+3. find 및 union 최대 m번 -> O(m log n)
+
+Time Complexity: O(m log n) time
+
+
+<br>
+
+## Prim's Algorithm
+
+### Cut Property
+
+: Edge e = (u, v)가 MST의 edge set T에 속해있다고 할 때, e는 **vertex u를 포함한 Vertex set S와 (vertex v가 속한 vertex set)V(G)-S를 이어주는 어떠한 edge들 중에서도 가장 작은 cost**를 가지고 있다.
+
+Cut Property에 의해, 어떤 임의의 vertex set S ⊂ V(G)에 대해, MST는 S와 V(G)-S를 이어주는 edge들 중 cost가 가장 작은 edge를 포함한다.
+
+따라서 **S에 속한 vertex를 하나씩 늘려가면서 cut property를 만족시키도록 edge를 고른다**면 MST를 만들 수 있다.
+
+<br>
+
+![](https://kjaer.io/images/algorithms/dijkstra.gif)
+
+
+<br>
+
+### Pesudo Code
+
+```
+S={v}
+T is empty (T will store edges of a MST)
+while S≠V(G)
+    pick e=(v,w) in E(G) such that, v ∈ S and w ∈ V(G)-S, and e has minimum cost
+    T=T ∪ {e}
+    S=S ∪ {w}
+return the set T
+```
+
+- 총 n번 반복
+- 해당 조건을 만족하는 edge를 찾는데 최대 m시간 소모
+
+Time Complexity = O(nm)
+
+<br>
+
+## Prim's Algorithm with Priority Queue
+
+```
+procedure prim(G,w)
+Input:      A connected undirected graph G=(V, E) with edge weights w(e)
+Output:     A minimum spanning tree defined by the edges X
+
+for all u ∈ V:
+    cost(u)=∞
+    prev(u)=nil
+Pick any initial node w₁
+cost(w₁)=0
+
+H=makequeue(V)  (priority queue, using cost-values as keys)
+while H is not empty:
+    v=deletemin(H)
+    for each {v,z} ∈ E:
+        if cost(z)>w(v,z):
+            cost(z)=w(v,z)
+            prev(z)=v
+            decreasekey(H,z)
+```
+
+- makequeue, insert n번 + deletemin n번 -> O(n log n)
+- 각 edge를 최대 2번 scan하여 decrease key는 최대 m번 수행하게 된다 -> O(m log n)
+
+Time Complexity: O((m+n)log n)
+
+
+<br>
+
 # String Algorithm
 
 : 문자열 S에서 특정 패턴 P를 찾아내는 알고리즘이다.

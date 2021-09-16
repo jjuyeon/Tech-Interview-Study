@@ -594,6 +594,129 @@ Node p와 p의 child node 중 큰 값을 가진 Node에 대해, Heap Property를
 
 <br>
 
+# Binary Search Tree
+
+: Tree 자료구조를 이용해서 Binary Search를 할 수 있도록 고안된 자료구조. Binary Search Tree의 각 node는 key를 가지고 있으며, key값 k를 가지는 non-leaf node p에 대해 **p의 left subtree 상의 모든 key값은 항상 p보다 작으며, p의 right subtree 상의 모든 key 값은 항상 p보다 크다**.
+
+<br>
+
+> Q) 왜 Array가 아닌 Tree로 만들었을까?
+> A) 특정 element에 대해 자주 검색할 경우, 검색 빈도 수가 높아질 수록 탐색하는 우선순위를 높게 하면 시간을 아낄 수 있음 -> Optimal Binary Search Tree
+> A) Array에 Insert, Delete를 하는 것은 O(N)시간이 소모됨
+
+<br>
+
+- get(key): tree traversal을 이용하여 현재 node의 key값이  찾으려는 key값보다 작다면 left child로, 크다면 right child로 이동한다. 일치하는 key값을 찾아내거나 NULL node로 이동할 때 까지 반복. **- O(h)**
+- insert(key): get연산과 유사하게 node를 이동한 뒤, leaf node에 도달하면 해당 node의 child에 key값을 가진 새로운 node를 left/right child로 삽입 **- O(h)**
+- delete(key): 해당 node가 leaf node/1개의 child/2개의 child를 가질 때에 따라 나뉜다. **- O(h)**
+  1. leaf node일 때: 해당 node를 삭제한다
+  2. 1개의 child를 가지고 있을 때: 해당 child를 현재 node의 자리로 대체하고 기존 node를 삭제한다.
+  3. 2개의 child를 가지고 있을 때: left subtree의 right most descendant를 node의 자리로 대체하고 기존 node를 삭제한다.
+
+<br>
+
+![image](https://user-images.githubusercontent.com/30489264/133288747-4c0eabb1-b284-4005-9474-c21f932a3771.png)
+
+> 💡 2개의 child node를 가진 node를 삭제하려고 할 때의 원리
+> 👉 삭제하려는 node를 p, p의 left subtree에서 right most descendant를 u라고 하자.
+> 이 때, u의 child는 최대 1개이다(right most node이기 때문에 해당 node의 right child는 존재할 수 없다). 
+> 따라서 p를 u로 대체하고, (재귀적)1개의 node를 삭제할 때 처럼 u node를 삭제하면 된다.
+
+<br>
+
+**<u> Binary Search Tree의 연산 시간복잡도는 Tree의 Height로 정해진다 ❗❗ </u>**
+
+![image](https://user-images.githubusercontent.com/30489264/133289796-daa9e81d-f04e-43b0-9c65-441ebc2c52e8.png)
+
+
+하지만 Tree가 위의 그림과 같은 편향 이진 트리(Skewed Binary Tree)일 경우, 전체 element 개수에 비해 연산의 시간복잡도는 증가한다.
+Tree가 **Complete Binary Tree일 때 시간복잡도가 O(log N)인 것**에 비해 최악의 경우 연결리스트의 형태를 한 **Skewed Binary Tree일 경우에는 시간 복잡도가 O(N)수렴**에 한다.
+
+Binary Search Tree의 경우 Insert, Delete 연산이 반복되면 Balanced 성질이 깨질 수 있다. 이를 보완하기 위한 자료구조들로는 대표적으로 AVL Tree, Red-Black Tree가 있다.
+
+<br>
+
+# AVL Tree
+
+![image](https://user-images.githubusercontent.com/30489264/133293230-036c9af6-986e-4058-b25e-d9d826209af8.png)
+(출처: https://casterian.net/archives/217)
+
+: (AVL은 사람 이름) Tree 상의 모든 node p에 대해 **p의 left subtree와 right subtree의 height 차이가 최대 1**을 만족하는 Binary Search Tree
+
+위의 성질을 Balanced Property라고 함 ❗❗
+
+Balanced Property에 기반한 AVL Tree의 최대 Height는(N개의 Node 기준) 최대 **2log n**이다.
+
+Binary Search Tree와 비교했을 때, get연산은 완전히 동일하지만 Insert, Delete 연산을 수행한 뒤 Balanced Property를 유지하기 위한 추가 작업을 진행한다.
+
+<br>
+
+## Maintaining Balance in AVL Tree
+
+![image](https://user-images.githubusercontent.com/30489264/133293811-37027a8d-6e88-47be-a6dc-690090b9ff91.png)
+
+위의 그림처럼 12라는 Key를 가진 Node를 추가하면, **해당 Node를 자손으로 가지는 Node들의 Height가 변한다**.
+
+이 때,
+- w: 새로 추가한 node
+- z: w의 ancestor 중 balanced property를 만족하지 않으면서 height가 최소인 node
+- y: z의 두 child 중 height가 큰 child node(heavy child)
+- x: z의 두 child 중 height가 큰 child node(heavy child)
+
+라고 정의하자.
+
+Tree의 모양은 다음과 같은 4가지가 나올 수 있다.
+
+![image](https://user-images.githubusercontent.com/30489264/133294676-54494053-c047-4a39-a517-e074e600cb53.png)
+
+### Case 1, 2의 경우
+
+y를 중심으로 해서 Tree를 회전한다.
+
+Case1의 경우
+
+- y의 left subtree T2를 임시로 저장한다.
+- y의 left child를 z로 연결한다.
+- z의 right child를 T2로 연결한다.
+
+Case2의 경우에는 Case1과 동일하지만 반대 방향으로 진행하면 된다.
+
+### Case 3, 4의 경우
+
+Case3의 경우
+
+- y를 기준으로 right rotate한다.
+- case1과 동일한 모양이 되어, case1의 rotate연산을 수행한다.
+
+Case4의 경우도 마찬가지다.
+
+(그림 추가 예정)
+
+<br>
+
+# Minimum Spanning Tree
+
+: **(Weighted) Connected Graph G**가 주어졌을 때, 다음을 만족하는 *G의 부분 그래프*를 말한다.
+
+G' = (V(G), T) (G의 Vertex Set과 일치하는 Vertex Set을 갖는다)
+
+1️⃣ G'은 **Connected**하다
+2️⃣ G'을 포함하는 Edge의 Cost 합이 (모든 경우의 수 중) 최소가 되어야 한다
+
+<br>
+
+> Q) G의 부분 그래프인데 왜 Tree인가?
+> A) Tree의 정의는 Connected & Acyclic Graph이다. 이 때, 2번 조건에서 Edge Cost 합이 최소가 되는 Sub Graph는 Cycle을 가질 수 없다 ❗❗
+> 만약 G'의 edge T를 선택하는 과정에서 cycle이 생긴하면, 해당 cycle에 속한 edge 중 아무런 edge 하나만 제거해도 Connected 성질을 만족하기 때문에 cost 합은 줄어든다. 따라서 2번 성질을 만족하면 자동으로 Acyclic Graph가 되고, 1번 성질에 의해 Tree가 되는 것 이다.
+
+1번 조건만 만족하는 Subgraph는 **Spanning Tree**라 한다.
+
+네트워크 회선의 설치 cost를 최소로 하는 시나리오에서 MST가 활용될 수 있다.
+
+MST를 구하는 두 가지 알고리즘은 [Kruskal's Algorithm](Algorithm.md), [Prim Algorithm](Algorithm.md)이 있다.
+
+<br>
+
 # Stack, Queue, Tree, Heap 비교
 
 ✅ Tree는 일반 Binary Tree 기준

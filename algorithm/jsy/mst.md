@@ -61,7 +61,7 @@ https://it-earth.tistory.com/98
 #### 3-2. 구현
 - 가중치를 저장하여, Edge 관리를 해야한다.
 - union-find 를 사용하여 구현한다.
-  - 왜? 현재 선택된 가중치가 같은 집합(MST)에 속하지 않는 간선인지 확인(**find**) -> 사이클을 형성하지 않는다고 확인되면, MST 집합에 합침(**union**)
+  - 왜? 현재 선택된 간선이 MST 집합에서 사이클을 이루는 간선인지 확인(**find**) -> 사이클을 형성하지 않는다고 확인되면, MST 집합에 합침(**union**)
 
 #### 3-3. 시간복잡도
 ![kruskal](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FUxeke%2FbtqJs4y1tXA%2F7HDz2N2NjtSEFNhOKh5Rsk%2Fimg.png)

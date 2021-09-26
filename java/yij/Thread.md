@@ -73,3 +73,11 @@ Java에서는 아래의 두 가지 방법을 통해 쓰레드를 이용할 수 �
      PrimeRun p = new PrimeRun(143);
      new Thread(p).start();
 ```
+
+<br>
+
+## Thread-Safe
+
+이처럼 Java는 개발자가 쉽게 다중의 Thread를 생성하고 사용할 수 있다.
+하지만 Multiple Thread 환경에서는 Resource를 공유하기 때문에 안정성에 대해 보장받지 못할 수 있고, 이에 유의해야 한다.
+따라서 **Multiple Thread를 사용할 때 에는 Thread-Safe를 지켜야 한다**.

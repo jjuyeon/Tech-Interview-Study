@@ -363,7 +363,7 @@ public class Item {
 
 #### 생성자 주입 방식의 장점
 
-1. Compile Time에 순환 참조 문제를 발견할 수 있다.
+1. Container의 생성 시점에 순환 참조 문제를 발견할 수 있다.
 2. `final` keyword를 이용해 객체를 immutable하게 만들 수 있다.
 3. 필요한 종속성이 `null`이 아닌지 체크할 수 있다.
 4. 항상 완전히 초기화된 상태에서 코드로 반환된다.

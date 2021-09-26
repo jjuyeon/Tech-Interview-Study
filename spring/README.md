@@ -5,6 +5,11 @@
 ### :notebook_with_decorative_cover: Spring
 1. Spring MVC 구조 흐름에 대해 과정대로 설명해주세요.
 2. Spring DI에 대해 설명해주세요.
+3. Spring과 Spring Boot의 차이점에 대해 설명해주세요.
+4. Filter와 Interceptor의 차이점에 대해 설명해주세요.
+5. 영속성 컨텍스트에 대해 설명해주세요.
+6. Spring에서 CORS 에러를 해결하기 위해 했던 방법은 무엇인가요?
+7. Bean/Component 어노테이션은 무엇이며, 둘의 차이점은 무엇인가요?
 
 ### :notebook_with_decorative_cover: JPA
 1. JPA Propagation 전파단계를 설명해주세요.

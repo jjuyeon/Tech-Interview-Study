@@ -22,6 +22,7 @@ https://oddpoet.net/blog/2017/04/27/cors-with-spring-security/
 - CorsFilter로 직접 response에 header를 넣어주는 방법
 
 1. filter라는 디렉토리 안에 CorsFilter 클래스를 만든다.
+
 ![directory](CorsFilter.png)
 
 2. CorsFilter 클래스를 Bean으로 등록한다.

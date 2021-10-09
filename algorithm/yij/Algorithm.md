@@ -384,11 +384,146 @@ print('Length of Longest Common Substring is',
 
 <br>
 
-### + Edit Distance
+### Edit Distance
 
-![image](https://user-images.githubusercontent.com/30489264/132952627-1be38e13-6034-421e-9635-3158f1a96bff.png)
+<!-- ![image](https://user-images.githubusercontent.com/30489264/132952627-1be38e13-6034-421e-9635-3158f1a96bff.png) -->
 
-특정 문자열 A에서 문자열 B로 변환하기 위해 몇 번의 연산(삽입, 수정, 삭제)이 필요한 지 구하는 DP 알고리즘
+![image](https://user-images.githubusercontent.com/30489264/135784505-7a692e94-b8f7-481d-a435-c93fc2e0160d.png)
+
+어떤 단어와 '비슷한(가까운)' 단어를 정의하기 위한 Dynamic Programming 알고리즘
+
+Edit Distance : 두 String이 얼마나 ***가까운지*** 나타내는 척도
+
+String A와 B 간의 **Edit Distance**는 'A에서 아래 3가지 type의 연산을 **최소한** 몇 번 수행하여 B로 만들 수 있는가❓'로 정의된다.
+
+1. Insertion: A에 Symbol 하나를 추가 (ex. excution ➡ execution)
+2. Deletion: A에 Symbol 하나를 제거 (ex. mmom ➡ mom)
+3. Substitution: A의 Symbol 하나를 다른 Symbol로 교체 (ex. intentien ➡ intention)
+
+<br>
+
+#### Edit Example
+
+![image](https://user-images.githubusercontent.com/30489264/135794616-2feb3943-561a-44dc-943c-a002bf5c725d.png)
+
+A = SNOWY, B = SUNNY
+
+- SNOWY (A)
+- S**U**NOWY (Insert U)
+- SUNOY (Delete W)
+- SUN**N**Y (Substitute O to N)
+
+- (-) ➡ (U) : A에서 Deletion
+- (O) ➡ (N) : A에서 Substitution
+- (W) ➡ (-) : A에서 Insertion
+
+> Edit distance 
+> = Gab table에서 Insertion + Deletion + Substitution이 발생한 Column의 개수
+> = 3
+
+<br>
+
+#### Edit distance with Dynamic Programming
+
+##### 문제 정의
+
+두 String A와 B가 주어졌을 때, A와 B 간의 Edit distance 구하기
+
+<br>
+
+##### Recursion 관계 정의
+
+⭐ A, B의 gap table에서 마지막 column을 제거한 table은 이에 해당되는 **A와 B의 prefix간의 edit distance**를 나타냄 ❗
+
+- 해당 prefix간의 edit distance가 더 짧다면 그에 해당하는 gap table + 제거한 column 추가를 통해 더 짧은 edit distance를 얻을 수 있음
+- A와 B의 edit distance는 A와 B의 prefix 간의 edit distance에 의해 결정할 수 있음
+
+<br>
+
+
+    Edit[i, j] = 두 prefix A[1 .. i]와 B[1 .. j] 간의 Edit distance
+
+와 같은 2차원 배열을 선언했을 때
+
+    // 1. 마지막 Column에서 Deletion이 발생
+    Edit[i, j] = Edit[i-1, j] + 1
+       
+    // 2. 마지막 Column에서 Insertion이 발생
+    Edit[i, j] = Edit[i, j-1] + 1
+
+    // 3. 마지막 Column에서 Substitution이 발생
+    Edit[i, j] = Edit[i-1, j-1]         // if A[i]==B[j]
+    Edit[i, j] = Edit[i-1, j-1] + 1     // if A[i]!=B[j]
+
+와 같다.
+
+    Edit[i, j] = {
+                    i       // Base Case. if j==0
+                    j       //            if i==0
+                    min {
+                        Edit[i, j-1] + 1        // Deletion
+                        Edit[i-1, j] + 1        // Insertion
+                        Edit[i-1, j-1] + [[A[i]!=B[j]]]     // Substitution
+                    }
+                 }
+
+따라서, `|A| = n, |B| = m`이라면 `A와 B의 Edit distance = Edit[n, m]`이 된다.
+
+<br>
+
+##### DP 적용 - Memoization
+
+- Memoization Structure
+  - 모든 i(1≤i≤n), j(1≤j≤m)에 대해 Edit(i, j)를 저장할 수 있는 **2차원 Array - Edit[0 .. n, 0 .. m]** 사용
+- Dependency
+  - `Edit[i, j]`는 `Edit[i, j-1]`, `Edit[i-1, j]`, `Edit[i-1, j-1]`에만 의존
+- 계산 순서
+  - row-major 또는 column-major order로 채울 수 있다
+
+
+ex) 
+
+|||S|U|N|N|Y|
+|-|-|-|-|-|-|-|
+||0|1|2|3|4|5|
+|S|1|0|1|2|3|4|
+|N|2|1|1|1|2|3|
+|O|3|2|2|2|2|3|
+|W|4|3|3|3|3|3|
+
+<br>
+
+##### Pseudo Code
+
+```
+EditDistance(A[1 .. n], B[1 .. m]):
+    for j ⬅ 0 to m
+        Edit[0, j] ⬅ j
+    
+    for i ⬅ 1 to n
+        Edit[i, 0] ⬅ i
+
+        for j ⬅ 1 to m
+            ins ⬅ Edit[i, j-1] + 1
+            del ⬅ Edit[i-1, j] + 1
+
+            if A[i] = B[j]
+                rep = Edit[i-1, j-1]
+            else
+                rep = Edit[i-1, j-1] + 1
+
+            Edit[i, j] = min {ins, del, rep}
+
+    return Edit[n, m]    
+```
+
+<br>
+
+##### Time Complexity
+
+Memoization을 적용해서 Edit Array의 Element 하나를 구할 때 마다 O(1)의 시간이 소모되므로
+
+👉 총 O(nm)의 Time Complexity를 가진다 (n = m일 경우, O(n^2))
 
 <br>
 

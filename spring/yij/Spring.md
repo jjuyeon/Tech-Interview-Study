@@ -1,3 +1,21 @@
+# Spring
+
+Java Enterprise Application을 쉽게 만들 수 있게 도와주는 기술
+
+***Spring Framework의 설계 철학***
+
+- 디자인에 대해 선택 가능성을 제공하라
+  - ex. 코드를 변경 없이도, Configuration을 통해 영속성 공급자를 변경할 수 있어야 한다(다른 Infra, 타사 API와의 통합 등)
+- 다양한 관점을 수용한다
+  - 유연성을 가지고 다양한 관점에서의 애플리케이션 요구 사항을 지원한다
+- 강력한 하위 호환성을 유지한다
+- API 설계에 집중할 수 있게 한다
+  - Spring의 개발 팀은 직관적이고, 시간이 지나도 유지될 수 있는 API를 만들기 위해 투자하고 있다
+- 코드 퀄리티에 높은 기준을 설정한다
+  - 패키지 간 순환 종속성이 없는 클린 코드 구조를 강조할 수 있는 독보적인 프레임워크
+
+<br>
+
 ## Spring 🆚 Spring Boot
 
 > Whatever happened next, the framework needed a name. In the book it was referred to as the “Interface21 framework” (at that point it used com.interface21 package names), but that was not a name to inspire a community. Fortunately Yann stepped up with a suggestion: “Spring”. His reasoning was association with nature (having noticed that I'd trekked to Everest Base Camp in 2000); and the fact that **Spring represented a fresh start after the “winter” of traditional J2EE**. We recognized the simplicity and elegance of this name, and quickly agreed on it.  
@@ -35,7 +53,7 @@
 
 <br>
 
-#### Spring Boot의 장점(정리)
+### Spring Boot의 장점
 
 - 간편한 설정
 - 편리한 의존성 관리 & 자동 권장 버전 관리
@@ -94,6 +112,12 @@ View: Response할 View Name
 
 <br>
 
+## @Bean and @Component
+
+https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans-java-bean-annotation
+
+<br>
+
 ## Filter
 
 필터란 리소스에 대한 요청(서블릿/정적 콘텐츠)이나 리소스의 응답 또는 둘 다에 대해 필터링 작업을 수행하는 개체를 말한다.
@@ -119,6 +143,8 @@ Interface Filter {
 - Logging
 - Encryption
 - Tokenizing
+
+<br>
 
 ### Filter Method
 
@@ -203,7 +229,7 @@ void hamburgerMethod() {
 ### Interceptor 설정
 
 <details>
-<summary>pom.xml setting for Interceptors</summary>
+<summary>👉(클릭) pom.xml setting for Interceptors</summary>
 
 ```xml
 <dependency>
@@ -239,7 +265,7 @@ void hamburgerMethod() {
 <br>
 
 <details>
-<summary>handler 메서드의 사용 예시</summary>
+<summary>👉(클릭) handler 메서드의 사용 예시</summary>
 
 ```java
 @Override
@@ -316,7 +342,7 @@ public boolean preHandle(
 ```
 
 <details>
-<summary>추가 코드</summary>
+<summary>👉(클릭) 추가 코드</summary>
 
 ```java
 private String getParameters(HttpServletRequest request) {

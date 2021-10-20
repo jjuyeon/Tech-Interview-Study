@@ -1,6 +1,6 @@
 # 6) Spring
 - contributor : [김경원](https://github.com/shining8543) , [윤이진](https://github.com/483759) , [진수연](https://github.com/jjuyeon)
-<hr/>
+<hr>
 
 ### :notebook_with_decorative_cover: Spring
 1. Spring MVC 구조 흐름에 대해 과정대로 설명해주세요.
@@ -21,3 +21,8 @@
 1. Builder 패턴에 대해서 설명하세요.
 2. MVC1과 MVC2 패턴의 차이를 설명해 주세요.
 3. (꼬리질문) 그렇다면, Spring MVC 는 무엇일까요?
+
+### :notebook_with_decorative_cover: JAVA
+1. JVM의 역할에 대해 설명해주세요.
+2. Date 대신 LocalDate를 사용하는 이유에 대해서 설명하세요.
+3. JDBC란 무엇인가요?

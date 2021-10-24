@@ -12,6 +12,7 @@
 7. Bean/Component 어노테이션은 무엇이며, 둘의 차이점은 무엇인가요?
 8. Spring Triangle의 POJO와 AOP에 대해 설명해주세요
 9. Hibernate에 대해서 설명하세요
+10. Bean의 생명주기에 대해 설명해주세요
 
 ### :notebook_with_decorative_cover: JPA
 1. JPA Propagation 전파단계를 설명해주세요.
@@ -21,8 +22,3 @@
 1. Builder 패턴에 대해서 설명하세요.
 2. MVC1과 MVC2 패턴의 차이를 설명해 주세요.
 3. (꼬리질문) 그렇다면, Spring MVC 는 무엇일까요?
-
-### :notebook_with_decorative_cover: JAVA
-1. JVM의 역할에 대해 설명해주세요.
-2. Date 대신 LocalDate를 사용하는 이유에 대해서 설명하세요.
-3. JDBC란 무엇인가요?

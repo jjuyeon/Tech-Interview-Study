@@ -8,4 +8,3 @@
 |Spring CORS|[:white_check_mark:](./cors.md)|
 |JPA Propagation|[:white_check_mark:](./propagation.md)|
 |JPA N+1 problem|[:white_check_mark:](./n+1.md)|
-|JDBC|[:white_check_mark:](./jdbc.md)|

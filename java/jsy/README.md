@@ -11,3 +11,4 @@
 |JAVA 호출방식|[:white_check_mark:](../jsy/call.md)|
 |JAVA 예외처리|[:white_check_mark:](../jsy/exception.md)|
 |JAVA 디자인패턴|[:white_check_mark:](../jsy/pattern.md)|
+|JDBC|[:white_check_mark:](./jdbc.md)|

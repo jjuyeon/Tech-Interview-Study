@@ -78,9 +78,8 @@ Java에서는 아래의 두 가지 방법을 통해 쓰레드를 이용할 수 �
 
 ## Thread-Safe
 
-이처럼 Java는 개발자가 쉽게 다중의 Thread를 생성하고 사용할 수 있다.
-하지만 Multiple Thread 환경에서는 Resource를 공유하기 때문에 안전한 접근 방식이 필요하다.
-따라서 **Multiple Thread를 사용할 때 에는 Thread-Safe하게 사용해야 한다**.
+Java 환경에서는 개발자가 쉽게 다중의 Thread를 생성하고 사용할 수 있다. 여러 쓰레드의 바이트 코드를 동시에 실행시키는 멀티 쓰레딩은 애플리케이션 성능을 향상시킬 수 있지만, Resource를 공유하기 때문에 안전한 접근 방식이 필요하다.
+즉, **Multiple Thread를 사용할 때 에는 Thread-Safe하게 사용해야 한다**.
 
 대부분의 경우 멀티 쓰레드 애플리케이션의 오류는 여러 쓰레드 간에 자원을 잘못 공유했을 때 발생한다.
 
@@ -104,7 +103,7 @@ public class MathUtils {
 이 방법은 메서드의 실행이 외부 상태에 의존하지 않으며, 상태 필드를 변화시키지도 않기 때문에 멀티 쓰레드 환경에서도 안전하게 호출할 수 있다.
 즉, 모든 쓰레드가 안전하게 `factorial()` 메서드를 호출할 수 있고, 서로 간섭하지 않으며 원하는 예상 결과를 얻어낼 수 있다.
 
-stateless하게 구현하면 쉽게 thread-safe를 달성할 수 있다.
+**stateless하게 구현**하면 쉽게 thread-safe를 달성할 수 있다.
 
 <br>
 
@@ -234,7 +233,7 @@ synchronized 방식과 concurrent 방식 모두 ***Collection을 Thread-safe하�
 
 <br>
 
-### Atomic Objects
+<!-- ### Atomic Objects
 
 `AtomicInteger`, `AtomicLong`, `AtomicReference` 같은 Atomic Class들을 이용해서 thread-safe를 구현할 수 있다.
 
@@ -253,4 +252,98 @@ public class Counter {
         return counter;
     }
 }
+``` -->
+
+### Synchronized Methods
+
+앞에서 소개한 접근 구현 방식들은 collection, data type에 적용할 수 있는 방법이다. 그보다 더 큰 범주에서 제어하기 위해 synchronized method를 만들어서 thread-safe를 구현할 수 있다.
+
+synchronized method는 **한 번에 하나의 쓰레드만 동기화된 메서드에 접근** 할 수 있도록 허용하고, 다른 쓰레드는 해당 메서드의 접근 권한이 없다.
+
+다른 쓰레드는 첫 번째 쓰레드의 수행이 완료되었거나 메서드가 예외를 throw할 때 까지 접근이 차단된 상태를 유지한다.
+
+<br>
+
+```java
+public synchronized void incrementCounter() {
+    counter += 1;
+}
 ```
+
+`synchronized` 키워드를 붙이면 동기화 메서드를 만들 수 있다. 
+
+이 예시에서는 한 번에 하나의 쓰레드만이 `incrementCounter` 메서드에 접근할 수 있으므로 중복 실행은 발생하지 않는다.
+
+쓰레드가 동기화 메서드를 호출하면 lock을 얻으며, 실행을 완료하면 반납한다. 다른 쓰레드는 다시 lock을 얻어서 액세스 권한을 얻을 수 있다.
+
+<br>
+
+### Synchronized Statements
+
+메서드 전체를 synchronized 하는 것은 수행을 불필요하게 직렬화할 수 있으므로 일부만을 thread-safe하게 구현할 수 있다.
+
+<br>
+
+```java
+public void incrementCounter() {
+    // additional unsynced operations
+    synchronized(this) {
+        counter += 1; 
+    }
+}
+```
+
+synchronized statements를 이용해서 `incrementCounter` 메서드를 구현하면 내부에서 동기화가 필요한 부분과 필요하지 않은 부분을 분리할 수 있다.
+
+단, `this`를 이용해서 lock을 제공하는 객체를 지정해야 한다.
+
+<br>
+
+### Read/Write Locks
+
+Thread-safe를 구현하기 위한 강력한 방법 중 하나는 `ReadWriteLock`을 사용하는 것 이다.
+
+읽기 전용 작업과 쓰기 전용 작업에 대한 Lock pair를 제공해서, 상황에 따른 접근 권한을 분리할 수 있다.
+
+리소스에 쓰는 쓰레드가 없으면 여러 쓰레드가 리소스의 읽기 권한을 가질 수 있고, 있으면 다른 쓰레드는 읽기 권한을 가질 수 없다.
+
+<br>
+
+```java
+public class ReentrantReadWriteLockCounter {
+    
+    private int counter;
+    private final ReentrantReadWriteLock rwLock = new ReentrantReadWriteLock();
+    private final Lock readLock = rwLock.readLock();
+    private final Lock writeLock = rwLock.writeLock();
+    
+    public void incrementCounter() {
+        writeLock.lock();
+        try {
+            counter += 1;
+        } finally {
+            writeLock.unlock();
+        }
+    }
+    
+    public int getCounter() {
+        readLock.lock();
+        try {
+            return counter;
+        } finally {
+            readLock.unlock();
+        }
+    }
+
+   // standard constructors
+   
+}
+```
+
+<br>
+
+## 정리
+
+> Multi-Thread 환경에서는 자원의 동시 접근으로 인한 문제가 발생할 수 있다.  
+> Thread-safe를 적용하기 위한 대상은 Field(Collection, Object), Method, Statements가 있다.  
+> `synchronized` keyword를 사용하는 것은 강력한 thread-safe를 지원하지만 수행을 직렬화하기 때문에 동시성의 장점이 떨어진다.

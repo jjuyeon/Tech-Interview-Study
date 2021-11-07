@@ -22,3 +22,6 @@
 ### :notebook_with_decorative_cover: Data Structure
 1. 'Stack, Queue, Tree, Heap'의 특징을 설명해주세요.
 2. Array와 LinkedList의 차이가 무엇인가요?
+
+### :notebook_with_decorative_cover: Algorithm
+1. 암호화 알고리즘의 종류에 대해 설명해주세요

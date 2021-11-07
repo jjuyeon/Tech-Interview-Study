@@ -1,6 +1,6 @@
 # 6) Spring
 - contributor : [김경원](https://github.com/shining8543) , [윤이진](https://github.com/483759) , [진수연](https://github.com/jjuyeon)
-<hr/>
+<hr>
 
 ### :notebook_with_decorative_cover: Spring
 1. Spring MVC 구조 흐름에 대해 과정대로 설명해주세요.
@@ -12,6 +12,8 @@
 7. Bean/Component 어노테이션은 무엇이며, 둘의 차이점은 무엇인가요?
 8. Spring Triangle의 POJO와 AOP에 대해 설명해주세요
 9. Hibernate에 대해서 설명하세요
+10. Bean의 생명주기에 대해 설명해주세요
+11. Bean scope에 대해 설명해주세요
 
 ### :notebook_with_decorative_cover: JPA
 1. JPA Propagation 전파단계를 설명해주세요.

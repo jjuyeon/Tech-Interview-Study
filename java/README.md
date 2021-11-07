@@ -13,6 +13,9 @@
 8. 직렬화가 무엇인지 설명하세요.
 9.  Call by Value와 Call by Reference의 차이에 대해 설명해주세요.
 10. Checked Exception과 Unchecked Exception의 차이를 설명해주세요.
+11. JVM의 역할에 대해 설명해주세요.
+12. JDBC란 무엇인가요?
+13. Thread-Safe에 대해 설명해주세요
 
 ### :notebook_with_decorative_cover: JAVA 자료구조
 1. Java의 HashMap과 HashTable의 차이점을 설명해주세요.
@@ -24,6 +27,7 @@
 7. 오토 박싱과 언박싱에 대해 설명해주세요.
 8. 업캐스팅과 다운캐스팅의 차이에 대해 설명해주세요.
 9. Wrapper Class에 대해 설명해주세요.
+10. Date 대신 LocalDate를 사용하는 이유에 대해서 설명하세요.
 
 ### :notebook_with_decorative_cover: JAVA 라이브러리 & 프레임워크
 1. '=='과 'equals()'의 차이에 대해 설명하세요.
@@ -31,5 +35,5 @@
 3. 컬렉션 프레임워크에 속한 List, Set, Map에 대해 설명해주세요.
 4. 정규 표현식에 대해 설명해주세요.
 
-### :notebook_with_decorative_cover: JAVA 디자인패턴
+### :notebook_with_decorative_cover: Design Pattern
 1. 싱글톤 패턴이란 무엇인지 설명해주세요.

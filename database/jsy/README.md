@@ -7,3 +7,4 @@
 |트랜잭션|[:white_check_mark:](../jsy/transaction.md)|
 |데이터 모델링|[:white_check_mark:](../jsy/modeling.md)|
 |정규화|[:white_check_mark:](../jsy/normalization.md)|
+|HINT|[:white_check_mark:](../jsy/hint.md)|

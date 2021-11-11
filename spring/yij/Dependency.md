@@ -1,6 +1,7 @@
 > [💡](#ioc---inversion-of-control) Spring의 IoC, DI에 대해 설명해주세요  
-> 👉 객체 간의 의존성을 코드 내에 구현하면, 클래스의 변경이 발생할 때 해당 클래스를 참조하는 클래스의 코드 또한 모두 변경해야 합니다. 따라서 유지보수성을 증가시키고, 객체 간의 의존 관계를 컴파일 시간이 아닌 런타임에 설정함으로서 객체 간 결합도를 떨어뜨려 유지보수성을 증가시키는 방식을 IoC라고 합니다. 스프링에서는 IoC 컨테이너가 의존성 주입을 통해 이를 구현했습니다.  
-> 스프링의 의존성 주입 방식은 생성자 주입, 세터 주입 방식이 있습니다. 일반적으로 객체의 불변성 성질을 지킬 수 있고 필드의 NPE가 발생하는 것을 막기 위한 생성자 주입 방식이 권장됩니다.
+> 👉 객체 간의 의존성을 코드 내에 구현하면, 클래스의 변경이 발생할 때 해당 클래스를 참조하는 클래스의 코드 또한 모두 변경해야 한다. 이는 유지보수성을 떨어뜨리는 일이다. IoC(Inversion of Control)은 객체 간의 의존 관계를 컴파일 시간이 아닌 런타임에 설정함으로서 객체 간 결합도를 떨어뜨려 유지보수성을 증가시키는 방식이다. 스프링에서는 IoC 컨테이너가 DI(Dependency Injection - 의존성 주입)을 통해 이를 구현했다.    
+> 스프링의 의존성 주입 방식은 생성자 주입, 세터 주입 방식이 있다. 일반적으로 객체의 불변성 성질을 지킬 수 있고 필드의 NPE가 발생하는 것을 막기 위한 생성자 주입 방식이 권장된다.  
+> Annotation을 이용한 필드 주입 방식도 존재하지만, 이는 Spring IoC 컨테이너가 로드되고 어노테이션을 설정한 필드의 클래스에 일치하는 의존성이 주입된다. 즉, Spring IoC 컨테이너가 실행되지 않으면 객체를 생성할 수 없다.
 
 <br>
 
@@ -14,7 +15,7 @@
 
 컨테이너는 빈을 생성할 때 의존성을 주입하므로 Compile Time이 아닌 Runtime에 객체 간의 의존 관계가 결정된다. 따라서 객체 간의 관계가 느슨하게 연결된다(loose coupling).
 
-`org.springframework.beans`와 `org.springframework.context` package는 Spring Framework의 IoC 컨테이너를 담당합니다.
+`org.springframework.beans`와 `org.springframework.context` package는 Spring Framework의 IoC 컨테이너를 담당한다.
 
 - `BeanFactory` : 모든 유형의 객체를 관리할 수 있는 configuration 메커니즘 제공
 - `ApplicationContext` : `BeanFactory`를 상속받은 Sub-Interface

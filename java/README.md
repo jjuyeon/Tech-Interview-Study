@@ -11,7 +11,7 @@
 6. 클래스는 무엇이고, 객체는 무엇인지 설명해주세요.
 7. 인터페이스와 추상클래스의 차이점은 무엇인지 설명해주세요.
 8. 직렬화가 무엇인지 설명하세요.
-9. Call by Value와 Call by Reference의 차이에 대해 설명해주세요.
+9.  Call by Value와 Call by Reference의 차이에 대해 설명해주세요.
 10. Checked Exception과 Unchecked Exception의 차이를 설명해주세요.
 11. JVM의 역할에 대해 설명해주세요.
 12. JDBC란 무엇인가요?

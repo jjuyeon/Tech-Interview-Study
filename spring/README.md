@@ -14,11 +14,13 @@
 9. Hibernate에 대해서 설명하세요
 10. Bean의 생명주기에 대해 설명해주세요
 11. Bean scope에 대해 설명해주세요
+12. 프레임워크란 무엇일까요? 프레임워크와 라이브러리 차이점에 대해 설명해주세요
 
 ### :notebook_with_decorative_cover: JPA
 1. JPA Propagation 전파단계를 설명해주세요.
 2. N+1 문제가 발생하는 이유와 이를 해결하는 방법을 설명해주세요.
 3. @Transactional 에 대해서 설명해주세요.
+4. JPA의 낙관적 락, 비관적 락에 대해 설명해주세요
 
 ### :notebook_with_decorative_cover: Design Pattern
 1. Builder 패턴에 대해서 설명하세요.

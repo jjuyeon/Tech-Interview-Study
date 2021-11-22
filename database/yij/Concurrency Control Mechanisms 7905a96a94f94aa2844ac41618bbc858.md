@@ -2,7 +2,7 @@
 
 # Database Lock ❓
 
-![Untitled](Concurrency%20Control%20Mechanisms%207905a96a94f94aa2844ac41618bbc858/Untitled.png)
+![Untitled](https://user-images.githubusercontent.com/30489264/142808253-8ed178bf-fabd-460d-9bbe-c70e56bdee78.png)
 
 RDBMS에서 트랜잭션 시스템에 적용되는 동시성 제어 방법.
 
@@ -10,7 +10,7 @@ RDBMS에서 트랜잭션 시스템에 적용되는 동시성 제어 방법.
 
 # Optimistic Concurrency Control
 
-![Untitled](Concurrency%20Control%20Mechanisms%207905a96a94f94aa2844ac41618bbc858/Untitled%201.png)
+![Untitled 1](https://user-images.githubusercontent.com/30489264/142808274-788b5832-61a0-4c69-ae2c-3a913c15be82.png)
 
 여러 트랜잭션이 **서로 간섭하지 않고 자주 완료될 수 있다**고 가정하는 동시성 제어 방식.
 
@@ -77,7 +77,7 @@ JPA에서는 `@Version` 어노테이션을 이용해서 낙관적 락을 사용�
 
 # Pessimistic Concurrency Control
 
-![Untitled](Concurrency%20Control%20Mechanisms%207905a96a94f94aa2844ac41618bbc858/Untitled%202.png)
+![Untitled 2](https://user-images.githubusercontent.com/30489264/142808297-5b05b622-c728-43c9-8501-0114246af8f8.png)
 
 여러 트랜잭션이 자주 간섭된다고 가정하는 동시성 제어 방식.
 

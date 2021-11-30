@@ -10,3 +10,8 @@
 ### :notebook_with_decorative_cover: Git
 1. Git을 쓰는 이유는 무엇인지, Git과 GitHub의 차이점에 대해 설명해주세요
 2. Git Rebase에 대해서 설명하세요
+
+### :notebook_with_decorative_cover: 기타
+1. 도커와 가상머신(VM)의 차이점에 대해 설명해주세요
+
+

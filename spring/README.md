@@ -15,6 +15,7 @@
 10. Bean의 생명주기에 대해 설명해주세요
 11. Bean scope에 대해 설명해주세요
 12. 프레임워크란 무엇일까요? 프레임워크와 라이브러리 차이점에 대해 설명해주세요
+13. Spring의 @Cacheable에 대해서 설명해주세요
 
 ### :notebook_with_decorative_cover: JPA
 1. JPA Propagation 전파단계를 설명해주세요.

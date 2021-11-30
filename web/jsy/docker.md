@@ -1,0 +1,60 @@
+# :question: Docker
+
+#### reference
+https://www.docker.com/resources/what-container#/package_software<br>
+https://rat2.tistory.com/47<br>
+https://corona-world.tistory.com/15
+<hr>
+
+## Question
+1. 도커와 가상머신(VM)의 차이점에 대해 설명해주세요
+- 도커와 가상머신은 하드웨어 안에 격리된 환경을 구성하여 어플리케이션을 배치하는 방법입니다.
+- 도커 컨테이너는 모든 컨테이너가 호스트 OS의 Kernel을 공유하고, 어플리케이션을 실행할 때 호스트 OS 위에 어플리케이션의 실행 패키지인 이미지만 배포하면 되므로 VM보다 더 가볍습니다. 
+- 반면 VM은 어플리케이션을 실행하기 위해서 VM을 띄우고 하드웨어의 자원을 할당한 다음, 게스트 OS(VM이 가지고 있는 OS 복사본)를 부팅하므로 훨씬 복잡하고 무겁게 실행해야 합니다.
+<hr>
+
+## :nerd_face:	What I study
+
+### 0. 가상화 기술이 나오기 전
+- 하나의 서버를 하나의 용도로만 사용함
+- 남는 서버 공간을 그대로 방치함
+- 하나의 서버에 하나의 운영체제, 하나의 프로그램만을 운영함
+- 안정적이지만 비효율적이라는 단점이 있었음
+
+<br><br>
+
+### 1. Virtual Machine
+- ***하이퍼바이저 기반***의 가상화 출현
+  - 호스트 머신에서 다수의 OS를 동시에 실행할 수 있게 해주는 소프트웨어
+  - 호스트 OS를 필요로 하지 않는 타입의 가상화 방식
+  - 소프트웨어를 물리적인 하드웨어 자원 위에 직접 동작하게 함으로써 하이퍼바이저 소프트웨어 위에서 개별로 가상머신을 동작하게 함
+
+![VM](https://www.docker.com/sites/default/files/d8/2018-11/docker-containerized-and-vm-transparent-bg.png)
+
+- ***Physical hardware 추상화***
+- 하나의 서버를 여러 서버로 나눠놓은 물리적인 하드웨어의 추상화
+- **하이퍼바이저**를 통해, 단일 머신에서 논리적으로 공간을 분할하여 VM이라는 여러 개의 독립적인 가상 환경의 서버를 실행할 수 있음
+- 각 VM마다 독립된 가상 하드웨어의 지원을 할당받음
+  - 각 VM은 OS 복사본과 애플리케이션 및 기타 필요한 바이너리 파일들과 라이브러리들을 전부 포함하고 있음
+- 논리적으로 분리되어 있어 도커 컨테이너에 비해 더 높은 격리 수준을 제공함
+  - 다양한 OS를 가상화할 수 있고 사용이 간편함
+  - 한 VM에서 오류가 발생해도 다른 VM에 영향을 끼치지 않음
+- 각 VM마다 용량이 크고, 부팅하는데 더 많은 시간이 소요됨
+
+<br><br>
+
+### 2. Docker
+- ***컨테이너 기반***의 가상화 출현
+  - 호스트 OS 위의 Application Layer에서 각각 Application 형태로 동작함
+    - 각각의 Application을 컨테이너라고 한다
+  - 각각의 컨테이너(Application)은 OS Kernel을 공유하여 동작함
+  - 그러나, 하나의 컨테이너 내에서 설정한 환경변수는 다른 컨테이너에 동일하게 적용되지 않음
+
+![docker](https://www.docker.com/sites/default/files/d8/2018-11/docker-containerized-and-vm-transparent-bg.png)
+
+- ***Application Layer에서 종속되는 패키지 코드를 추상화***
+  - 즉, 호스트 OS 위에서 docker가 동작하여 여러개의 Application 형태로 동작함
+  - code와 dependencies를 묶어서 Application Layger 형태로 추상화
+- 여러 컨테이너가 동일한 머신에서 실행됨 + 유저스페이스에서 각자 격리된 프로세스로 실행되고 OS Kernel은 다른 컨테이너와 공유함
+- 호스트 입장에서 보면 하나의 프로세스로 동작, 유저 입장에선 호스트와 무관하게 동작하는 VM처럼 보여서 '컨테이너 가상화'기술로도 불림
+- OS Kernel을 공유하기 때문에 VM보다 적은 용량을 사용하며, 더 많은 어플리케이션을 다룰 수 있음

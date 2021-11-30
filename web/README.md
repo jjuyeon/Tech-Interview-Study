@@ -13,5 +13,3 @@
 
 ### :notebook_with_decorative_cover: 기타
 1. 도커와 가상머신(VM)의 차이점에 대해 설명해주세요
-
-

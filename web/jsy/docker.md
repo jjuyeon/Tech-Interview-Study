@@ -23,13 +23,15 @@ https://corona-world.tistory.com/15
 
 <br><br>
 
+![VM](https://www.docker.com/sites/default/files/d8/2018-11/docker-containerized-and-vm-transparent-bg.png)
+
+<br>
+
 ### 1. Virtual Machine
 - ***하이퍼바이저 기반***의 가상화 출현
   - 호스트 머신에서 다수의 OS를 동시에 실행할 수 있게 해주는 소프트웨어
   - 호스트 OS를 필요로 하지 않는 타입의 가상화 방식
   - 소프트웨어를 물리적인 하드웨어 자원 위에 직접 동작하게 함으로써 하이퍼바이저 소프트웨어 위에서 개별로 가상머신을 동작하게 함
-
-![VM](https://www.docker.com/sites/default/files/d8/2018-11/docker-containerized-and-vm-transparent-bg.png)
 
 - ***Physical hardware 추상화***
 - 하나의 서버를 여러 서버로 나눠놓은 물리적인 하드웨어의 추상화
@@ -49,8 +51,6 @@ https://corona-world.tistory.com/15
     - 각각의 Application을 컨테이너라고 한다
   - 각각의 컨테이너(Application)은 OS Kernel을 공유하여 동작함
   - 그러나, 하나의 컨테이너 내에서 설정한 환경변수는 다른 컨테이너에 동일하게 적용되지 않음
-
-![docker](https://www.docker.com/sites/default/files/d8/2018-11/docker-containerized-and-vm-transparent-bg.png)
 
 - ***Application Layer에서 종속되는 패키지 코드를 추상화***
   - 즉, 호스트 OS 위에서 docker가 동작하여 여러개의 Application 형태로 동작함

@@ -6,6 +6,7 @@
 1. DAO, DTO, VO에 대해 설명해보세요.
 2. RESTful 하다는 것이 무엇인지 설명해주세요.
 3. HTTP SET-Cookie에 대해서 설명해주세요
+4. URI, URL, URN이란?
 
 ### :notebook_with_decorative_cover: Git
 1. Git을 쓰는 이유는 무엇인지, Git과 GitHub의 차이점에 대해 설명해주세요
@@ -13,3 +14,4 @@
 
 ### :notebook_with_decorative_cover: 기타
 1. 도커와 가상머신(VM)의 차이점에 대해 설명해주세요
+2. 쿠버네티스가 무엇인가?
